@@ -1,8 +1,13 @@
 package com.myapp;
 
 import android.app.Application;
+import android.content.res.Configuration;
 
+import com.ad4screen.sdk.A4S;
 import com.facebook.react.ReactApplication;
+import com.reactlibrary.BuildConfig;
+import com.reactlibrary.RNAccPackage;
+import com.reactlibrary.analytics.RNAccTrackingPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -22,7 +27,9 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
-          new MainReactPackage()
+          new MainReactPackage(),
+            new RNAccPackage(),
+            new RNAccTrackingPackage()
       );
     }
 
@@ -38,8 +45,35 @@ public class MainApplication extends Application implements ReactApplication {
   }
 
   @Override
+  public void onConfigurationChanged(Configuration newConfig) {
+      if (A4S.isInA4SProcess(this)) {
+          return;
+      }
+      super.onConfigurationChanged(newConfig);
+  }
+
+  @Override
   public void onCreate() {
+    if (A4S.isInA4SProcess(this)) {
+      return;
+    }
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
+  }
+
+  @Override
+  public void onLowMemory() {
+    if (A4S.isInA4SProcess(this)) {
+      return;
+    }
+    super.onLowMemory();
+  }
+
+  @Override
+  public void onTerminate() {
+    if (A4S.isInA4SProcess(this)) {
+      return;
+    }
+    super.onTerminate();
   }
 }

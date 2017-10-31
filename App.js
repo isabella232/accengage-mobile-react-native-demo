@@ -11,6 +11,23 @@ import {
   Text,
   View
 } from 'react-native';
+import Acc from 'react-native-acc';
+
+var AccTracking = Acc.analytics.tracking;
+
+var papa = {
+  name: "Andrei",
+  age: 33
+};
+var maman = {
+    name: "Muriel",
+    age: 33
+};
+var nikita = {
+  name: "Nikita",
+  age: 1,
+  parents : [papa, maman]
+};
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -32,6 +49,7 @@ export default class App extends Component<{}> {
         <Text style={styles.instructions}>
           {instructions}
         </Text>
+        <Text>{AccTracking.trackEvent(5001, nikita)}</Text>
       </View>
     );
   }
