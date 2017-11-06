@@ -11,6 +11,7 @@ import {
   Text,
   View
 } from 'react-native';
+import { StackNavigator } from 'react-navigation';
 import Button from 'react-native-button';
 import Acc from 'react-native-acc';
 
@@ -54,7 +55,10 @@ function trackPurchase() {
     Acc.analytics.tracking.trackPurchase("03", "EUR", 136.8, [item1, item2, item3]);
 }
 
-export default class App extends Component<{}> {
+class HomeScreen extends Component<{}> {
+  static navigationOptions = {
+    title: 'Accengage Demo',
+  };
   render() {
     return (
       <View style={styles.container}>
@@ -89,6 +93,16 @@ export default class App extends Component<{}> {
           </Button>
       </View>
     );
+  }
+}
+
+const AccDemoApp = StackNavigator({
+  Home: { screen: HomeScreen }
+});
+
+export default class App extends React.Component {
+  render() {
+    return <AccDemoApp />;
   }
 }
 
