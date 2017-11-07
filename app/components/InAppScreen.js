@@ -9,10 +9,10 @@ import Acc from 'react-native-acc';
 function setInAppReadyCallback() {
   Acc.inapp.setInAppReadyCallback(
     (inapp) => {
-
+      console.log("setInAppReadyCallback inapp: " + JSON.stringify(inapp));
     },
     (error) => {
-
+      console.log("setInAppReadyCallback error: " + error); // never happens for iOS
     });
 }
 
