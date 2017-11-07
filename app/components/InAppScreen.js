@@ -6,6 +6,16 @@ import {
 import Button from 'react-native-button';
 import Acc from 'react-native-acc';
 
+function setInAppReadyCallback() {
+  Acc.inapp.setInAppReadyCallback(
+    (inapp) => {
+
+    },
+    (error) => {
+
+    });
+}
+
 export default class InAppScreen extends Component {
   static navigationOptions = ({navigation}) => ({
     title: "Static Lists",
@@ -14,6 +24,7 @@ export default class InAppScreen extends Component {
     return (
       <View style={styles.container}>
         <Button
+          onPress={setInAppReadyCallback}
           containerStyle={styles.accbuttoncontainer}
           style={styles.accbutton}>
           TODO

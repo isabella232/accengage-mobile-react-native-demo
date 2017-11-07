@@ -8,6 +8,7 @@ import com.facebook.react.ReactApplication;
 import com.reactlibrary.BuildConfig;
 import com.reactlibrary.RNAccPackage;
 import com.reactlibrary.analytics.RNAccTrackingPackage;
+import com.reactlibrary.inapp.RNAccInAppPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -29,7 +30,8 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
             new RNAccPackage(),
-            new RNAccTrackingPackage()
+            new RNAccTrackingPackage(),
+            new RNAccInAppPackage()
       );
     }
 
