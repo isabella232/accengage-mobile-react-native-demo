@@ -17,6 +17,7 @@ import AnalyticsScreen from "./app/components/AnalyticsScreen";
 import TrackingScreen from './app/components/analytics/TrackingScreen'
 import StaticListsScreen from "./app/components/analytics/StaticListsScreen";
 import InAppScreen from "./app/components/InAppScreen";
+import ListStaticListsScreen from "./app/components/analytics/ListStaticListsScreen";
 
 class HomeScreen extends Component {
   static navigationOptions = {
@@ -50,6 +51,7 @@ const AccDemoApp = StackNavigator({
   Analytics: {screen: AnalyticsScreen},
   Tracking: {screen: TrackingScreen},
   StaticLists: {screen: StaticListsScreen},
+  ListStaticListsScreen: {screen: ListStaticListsScreen},
 });
 
 export default class App extends React.Component {

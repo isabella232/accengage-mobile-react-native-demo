@@ -7,6 +7,7 @@ import com.ad4screen.sdk.A4S;
 import com.facebook.react.ReactApplication;
 import com.reactlibrary.BuildConfig;
 import com.reactlibrary.RNAccPackage;
+import com.reactlibrary.analytics.RNAccStaticListsPackage;
 import com.reactlibrary.analytics.RNAccTrackingPackage;
 import com.reactlibrary.inapp.RNAccInAppPackage;
 import com.facebook.react.ReactNativeHost;
@@ -29,9 +30,10 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new RNAccPackage(),
-            new RNAccTrackingPackage(),
-            new RNAccInAppPackage()
+          new RNAccInAppPackage(),
+          new RNAccPackage(),
+          new RNAccTrackingPackage(),
+          new RNAccStaticListsPackage()
       );
     }
 
