@@ -10,15 +10,33 @@ function setInAppReadyCallback() {
   Acc.inapp.setInAppReadyCallback(
     (inapp) => {
       console.log("setInAppReadyCallback inapp: " + JSON.stringify(inapp));
-    },
-    (error) => {
-      console.log("setInAppReadyCallback error: " + error); // never happens for iOS
+    });
+}
+
+function setInAppDisplayedCallback() {
+  Acc.inapp.setInAppDisplayedCallback(
+    (inapp) => {
+      console.log("setInAppDisplayedCallback inapp: " + JSON.stringify(inapp));
+    });
+}
+
+function setInAppClickedCallback() {
+  Acc.inapp.setInAppClickedCallback(
+    (inapp) => {
+      console.log("setInAppClickedCallback inapp: " + JSON.stringify(inapp));
+    });
+}
+
+function setInAppClosedCallback() {
+  Acc.inapp.setInAppClosedCallback(
+    (inapp) => {
+      console.log("setInAppClosedCallback inapp: " + JSON.stringify(inapp));
     });
 }
 
 export default class InAppScreen extends Component {
   static navigationOptions = ({navigation}) => ({
-    title: "Static Lists",
+    title: "InApp",
   });
   render() {
     return (
@@ -27,7 +45,25 @@ export default class InAppScreen extends Component {
           onPress={setInAppReadyCallback}
           containerStyle={styles.accbuttoncontainer}
           style={styles.accbutton}>
-          TODO
+          Set Ready Callback
+        </Button>
+        <Button
+          onPress={setInAppDisplayedCallback}
+          containerStyle={styles.accbuttoncontainer}
+          style={styles.accbutton}>
+          Set Displayed Callback
+        </Button>
+        <Button
+          onPress={setInAppClickedCallback}
+          containerStyle={styles.accbuttoncontainer}
+          style={styles.accbutton}>
+          Set Clicked Callback
+        </Button>
+        <Button
+          onPress={setInAppClosedCallback}
+          containerStyle={styles.accbuttoncontainer}
+          style={styles.accbutton}>
+          Set Closed Callback
         </Button>
       </View>
     );
@@ -44,7 +80,7 @@ const styles = StyleSheet.create({
   accbuttoncontainer: {
     margin: 5,
     padding: 10,
-    width: 200,
+    width: 300,
     height: 45,
     overflow: 'hidden',
     borderRadius: 4,
