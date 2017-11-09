@@ -6,13 +6,6 @@ import {
 import Button from 'react-native-button';
 import Acc from 'react-native-acc';
 
-function setInAppReadyCallback() {
-  Acc.inapp.setInAppReadyCallback(
-    (inapp) => {
-      console.log("setInAppReadyCallback inapp: " + JSON.stringify(inapp));
-    });
-}
-
 function setInAppDisplayedCallback() {
   Acc.inapp.setInAppDisplayedCallback(
     (inapp) => {
@@ -34,19 +27,42 @@ function setInAppClosedCallback() {
     });
 }
 
+
+
 export default class InAppScreen extends Component {
   static navigationOptions = ({navigation}) => ({
     title: "InApp",
   });
+
+  constructor() {
+    super();
+    this.isInAppLocked = false;
+    this.state = {
+      buttonLockName : 'Lock displaying InApps',
+    };
+
+    this._setInAppDisplayEnabled = this._setInAppDisplayEnabled.bind(this);
+  }
+
+  _isInAppDisplayEnabled() {
+    console.log("_isInAppDisplayEnabled: " + Acc.inapp.isInAppDisplayEnabled());
+  }
+
+  _setInAppDisplayEnabled() {
+    if (this.isInAppLocked) {
+      Acc.inapp.setInAppDisplayEnabled(false);
+      this.setState({buttonLockName : 'Enable InApps'});
+      this.isInAppLocked = false;
+    } else {
+      Acc.inapp.setInAppDisplayEnabled(true);
+      this.setState({buttonLockName : 'Disable InApps'});
+      this.isInAppLocked = true;
+    }
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <Button
-          onPress={setInAppReadyCallback}
-          containerStyle={styles.accbuttoncontainer}
-          style={styles.accbutton}>
-          Set Ready Callback
-        </Button>
         <Button
           onPress={setInAppDisplayedCallback}
           containerStyle={styles.accbuttoncontainer}
@@ -64,6 +80,12 @@ export default class InAppScreen extends Component {
           containerStyle={styles.accbuttoncontainer}
           style={styles.accbutton}>
           Set Closed Callback
+        </Button>
+        <Button
+          onPress={this._isInAppDisplayEnabled}
+          containerStyle={styles.accbuttoncontainer}
+          style={styles.accbutton}>
+          {this.state.buttonLockName}
         </Button>
       </View>
     );
