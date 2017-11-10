@@ -36,27 +36,42 @@ export default class InAppScreen extends Component {
 
   constructor() {
     super();
-    this.isInAppLocked = false;
+    this.isInAppEnabled = false;
     this.state = {
-      buttonLockName : 'Lock displaying InApps',
+      buttonIsInAppEnabledName : 'Enable/Disable InApps',
     };
 
     this._setInAppDisplayEnabled = this._setInAppDisplayEnabled.bind(this);
+    this._checkInAppDisplayEnabled();
   }
 
-  _isInAppDisplayEnabled() {
-    console.log("_isInAppDisplayEnabled: " + Acc.inapp.isInAppDisplayEnabled());
+  async _checkInAppDisplayEnabled() {
+    console.log("_checkInAppDisplayEnabled");
+    try {
+      this.isInAppEnabled = await Acc.inapp.isInAppDisplayEnabled();
+      console.log("_checkInAppDisplayEnabled OK:" + this.isInAppEnabled);
+      this._updateButtonIsInAppEnabledName();
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   _setInAppDisplayEnabled() {
-    if (this.isInAppLocked) {
+    if (this.isInAppEnabled) {
       Acc.inapp.setInAppDisplayEnabled(false);
-      this.setState({buttonLockName : 'Enable InApps'});
-      this.isInAppLocked = false;
+      this.isInAppEnabled = false;
     } else {
       Acc.inapp.setInAppDisplayEnabled(true);
-      this.setState({buttonLockName : 'Disable InApps'});
-      this.isInAppLocked = true;
+      this.isInAppEnabled = true;
+    }
+    this._updateButtonIsInAppEnabledName();
+  }
+
+  _updateButtonIsInAppEnabledName() {
+    if (this.isInAppEnabled) {
+      this.setState({buttonIsInAppEnabledName : 'Enable InApps'});
+    } else {
+      this.setState({buttonIsInAppEnabledName : 'Disable InApps'});
     }
   }
 
@@ -82,10 +97,10 @@ export default class InAppScreen extends Component {
           Set Closed Callback
         </Button>
         <Button
-          onPress={this._isInAppDisplayEnabled}
+          onPress={this._setInAppDisplayEnabled}
           containerStyle={styles.accbuttoncontainer}
           style={styles.accbutton}>
-          {this.state.buttonLockName}
+          {this.state.buttonIsInAppEnabledName}
         </Button>
       </View>
     );
