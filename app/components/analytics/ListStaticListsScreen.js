@@ -9,63 +9,78 @@ import {
     View,
     Slider,
     Switch,
-    NativeModules
+    NativeModules,
+    List,
+    ListItem,
+    FlatList
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import Button from 'react-native-button';
 import Acc from 'react-native-acc';
 
-function getListsOfSubscriptions() {
-    console.log(Acc.analytics.staticlist);
-    Acc.analytics.staticlist.getListsOfSubscriptions();
-}
-
 export default class ListStaticListsScreen extends Component {
   static navigationOptions = ({navigation}) => ({
-    title: "Static Lists List",
+    title: "Lists Subscribed",
   });
 
   constructor(props) {
         super(props);
         this.state = {
-            index: 0,
-            idString: null,
-            choice: "Subscribed",
-            //date: Moment().format("YYYY-MM-DD"),
-            switchIsOn: false,
-            resultIdentifier: null,
-            resultExpirationDate: null,
-            resultName: null,
-            resultStatus: null,
+            data: [],
+            name: ''
         };
-}
+        this.getData = this.getData.bind(this);        
+    }
 
-
-  render() {
+    render() {
         return (
             <View style={styles.container}>
                 <Button containerStyle={styles.accbuttoncontainer}
                     style={styles.accbutton}
-                    onPress={getListsOfSubscriptions}>
-                    getListsOfSubscriptions
+                    onPress={this.getData}>
+                    Get Subscribed Lists 
                 </Button>
+                <FlatList
+                  data={this.state.data}
+                  renderItem={({item}) => <Text style={styles.text}>Nom : {item.name + " | ExternalID : " + item.listID}</Text>}
+                />
             </View>
         );
     }
-}
 
+    getData() {
+        this._getStaticListsSubscribed();
+    }
+
+    async _getStaticListsSubscribed() {
+          try {
+            var data = await Acc.analytics.staticlist.getStaticListsSubscribed();
+            console.log(data);
+            console.log(data[0].name);
+            if(data != null) {
+                this.setState({data: data,
+                    name: data[0].name});
+                console.log(this.state.data);
+            }
+
+          } catch (e) {
+            console.log(e);
+          }
+    }
+
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
   accbuttoncontainer: {
     margin: 5,
     padding: 10,
-    width: 200,
+    width: 300,
     height: 45,
     overflow: 'hidden',
     borderRadius: 4,

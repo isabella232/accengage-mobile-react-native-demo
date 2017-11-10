@@ -25,15 +25,14 @@ export default class StaticListsScreen extends Component {
             index: 0,
             idString: null,
             choice: "Subscribe",
-            //date: Moment().format("YYYY-MM-DD"),
             switchIsOn: false,
             resultIdentifier: null,
             resultExpirationDate: null,
             resultName: null,
             resultStatus: null,
         };
-}
-
+        this._sendAction = this._sendAction.bind(this);
+  }
   render() {
     const { navigate } = this.props.navigation;
         return (
@@ -101,9 +100,6 @@ export default class StaticListsScreen extends Component {
                         Id: {this.state.resultIdentifier}
                     </Text>
                     <Text style={styles.text}>
-                        ExpDate: {this.state.resultExpirationDate}
-                    </Text>
-                    <Text style={styles.text}>
                         Name: {this.state.resultName}
                     </Text>
                     <Text style={styles.text}>
@@ -133,31 +129,43 @@ export default class StaticListsScreen extends Component {
         this.setState({index: value});
     };
 
+    async _getSubscriptionStatusForList() {
+      try {
+        var result = await Acc.analytics.staticlist.getSubscriptionStatusForLists(this.state.idString);
+        console.log(result);
+        if(result != null) {
+          if(result.status == 2) {
+             var subStatus = "Subscribed";
+          } else if(result.status == 4) {
+            var subStatus = "Unsubscribed";
+          } else {
+            var subStatus = "Doesn't exist"
+          }
+        }
+        this.setState({
+                        resultIdentifier: result.id,
+                        resultName: result.name,
+                        resultStatus: subStatus,
+                    }); 
+      } catch (e) {
+        console.log(e);
+      }
+    }
+
     _sendAction = () => {
+      console.log(typeof(this.state.date));
         if (this.state.index === 0) {
             if (this.state.switchIsOn)
-                Acc.analytics.staticlist.subscribeToLists([{
-                    identifer: this.state.idString,
-                    //expirationDate: Moment(this.state.date, 'YYYY-MM-DD').unix()
-                }]);
+                Acc.analytics.staticlist.subscribeToLists(this.state.idString,
+                    this.state.date);
             else
                 Acc.analytics.staticlist.subscribeToLists(this.state.idString);
         }
         else if (this.state.index === 1)
             Acc.analytics.staticlist.unsubscribeFromLists(this.state.idString);
-        else if (this.state.index === 2)
-            Acc.analytics.staticlist.subscriptionStatusForLists([{identifer: this.state.idString}], (error, result) => {
-                if (error) {
-                    console.error(error);
-                } else {
-                    this.setState({
-                        resultIdentifier: result[0].identifer,
-                        //resultExpirationDate: Moment.unix(result[0].expirationDate).format('YYYY-MM-DD'),
-                        resultName: result[0].name,
-                        resultStatus: result[0].subscriptionStatus,
-                    });
-                }
-            });
+        else if (this.state.index === 2) {
+            this._getSubscriptionStatusForList(this.state.idString);
+        } 
     }
 }
 
