@@ -1,13 +1,9 @@
 import React, {Component} from 'react';
-import DatePicker from 'react-native-datepicker'
 import {
     StyleSheet,
     Text,
     TextInput,
-    View,
-    Slider,
-    Switch,
-    NativeModules
+    View
 } from 'react-native';
 import Button from 'react-native-button';
 import Acc from 'react-native-acc';
@@ -23,7 +19,6 @@ export default class DeviceInfoScreen extends Component {
             key: null,
             value: null
         };
-        this._sendAction = this._sendAction.bind(this);
   }
   render() {
     const { navigate } = this.props.navigation;
@@ -68,7 +63,9 @@ export default class DeviceInfoScreen extends Component {
 
     _sendAction = () => {
       console.log("Action sended");
-      Acc.analytics.deviceInfo.updateDeviceInfo(this.state.key, this.state.value);
+      var deviceInfo = {};
+      deviceInfo[this.state.key] = this.state.value;
+      Acc.analytics.deviceInfo.updateDeviceInfo(deviceInfo);
     }
 }
 
