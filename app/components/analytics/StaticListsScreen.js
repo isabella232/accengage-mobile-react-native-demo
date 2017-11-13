@@ -136,7 +136,8 @@ export default class StaticListsScreen extends Component {
     async _getSubscriptionStatusForList() {
       try {
         var lists = [];
-        lists.push(this.state.idString);
+        var list = {externalId: this.state.idString, expirationDate: Moment(this.state.date, 'YYYY-MM-DD').unix()};
+        lists.push(list);
         var result = await Acc.analytics.staticlist.getSubscriptionStatusForLists(lists);
         console.log(result);
         this.setState({
@@ -152,12 +153,13 @@ export default class StaticListsScreen extends Component {
 
     _sendAction = () => {
       var lists = [];
-      lists.push(this.state.idString);
+      var list = {externalId: this.state.idString, expirationDate: Moment(this.state.date, 'YYYY-MM-DD').unix()};
+      lists.push(list);
       console.log(Moment(this.state.date, 'YYYY-MM-DD').unix());
         if (this.state.index === 0) {
-            if (this.state.switchIsOn)
-                Acc.analytics.staticlist.subscribeToLists(lists,
-                    Moment(this.state.date, 'YYYY-MM-DD').unix());
+            if (this.state.switchIsOn) {
+                Acc.analytics.staticlist.subscribeToLists(lists);
+            }
             else
                 Acc.analytics.staticlist.subscribeToLists(lists);
         }
