@@ -2,6 +2,7 @@
 
 import React, {Component} from 'react';
 import DatePicker from 'react-native-datepicker'
+import Moment from 'moment';
 import {
     StyleSheet,
     Text,
@@ -142,7 +143,7 @@ export default class StaticListsScreen extends Component {
                         resultIdentifier: result.id,
                         resultName: result.name,
                         resultStatus: result.status,
-                        resultExpirationDate: result.expirationDate
+                        resultExpirationDate: Moment.unix(result.expirationDate).format('YYYY-MM-DD')
                     }); 
       } catch (e) {
         console.log(e);
@@ -152,10 +153,11 @@ export default class StaticListsScreen extends Component {
     _sendAction = () => {
       var lists = [];
       lists.push(this.state.idString);
+      console.log(Moment(this.state.date, 'YYYY-MM-DD').unix());
         if (this.state.index === 0) {
             if (this.state.switchIsOn)
                 Acc.analytics.staticlist.subscribeToLists(lists,
-                    this.state.date);
+                    Moment(this.state.date, 'YYYY-MM-DD').unix());
             else
                 Acc.analytics.staticlist.subscribeToLists(lists);
         }
