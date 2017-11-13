@@ -136,15 +136,14 @@ export default class StaticListsScreen extends Component {
     async _getSubscriptionStatusForList() {
       try {
         var lists = [];
-        var list = {listId: this.state.idString, expirationDate: Moment(this.state.date, 'YYYY-MM-DD').unix()};
+        var list = {listId: this.state.idString};
         lists.push(list);
         var result = await Acc.analytics.staticlist.getSubscriptionStatusForLists(lists);
-        console.log(result);
         this.setState({
-                        resultIdentifier: result.id,
-                        resultName: result.name,
-                        resultStatus: result.status,
-                        resultExpirationDate: Moment.unix(result.expirationDate).format('YYYY-MM-DD')
+                        resultIdentifier: result[0].listId,
+                        resultName: result[0].name,
+                        resultStatus: result[0].status,
+                        resultExpirationDate: Moment.unix(result[0].expirationDate).format('YYYY-MM-DD')
                     }); 
       } catch (e) {
         console.log(e);
@@ -165,9 +164,14 @@ export default class StaticListsScreen extends Component {
                 Acc.analytics.staticlist.subscribeToLists(lists);
             }
         }
-        else if (this.state.index === 1)
+        else if (this.state.index === 1) {
+            var list = {listId: this.state.idString};
+            lists.push(list);
             Acc.analytics.staticlist.unsubscribeFromLists(lists);
+        }
         else if (this.state.index === 2) {
+            var list = {listId: this.state.idString};
+            lists.push(list);
             this._getSubscriptionStatusForList(lists);
         } 
     }
