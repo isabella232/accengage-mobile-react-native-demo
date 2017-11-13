@@ -68,6 +68,7 @@ export default class DeviceInfoScreen extends Component {
 
     _sendAction = () => {
       console.log("Action sended");
+      Acc.analytics.deviceInfo.updateDeviceInfo(this.state.key, this.state.value);
     }
 }
 

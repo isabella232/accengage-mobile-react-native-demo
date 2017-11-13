@@ -5,9 +5,9 @@ import android.content.res.Configuration;
 
 import com.ad4screen.sdk.A4S;
 import com.facebook.react.ReactApplication;
-import com.reactlibrary.RNAccStaticListsPackage;
 import com.reactlibrary.BuildConfig;
 import com.reactlibrary.RNAccPackage;
+import com.reactlibrary.analytics.RNAccDeviceInfoPackage;
 import com.reactlibrary.analytics.RNAccStaticListsPackage;
 import com.reactlibrary.analytics.RNAccTrackingPackage;
 import com.reactlibrary.inapp.RNAccInAppPackage;
@@ -31,11 +31,11 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new RNAccStaticListsPackage(),
           new RNAccInAppPackage(),
           new RNAccPackage(),
           new RNAccTrackingPackage(),
-          new RNAccStaticListsPackage()
+          new RNAccStaticListsPackage(),
+          new RNAccDeviceInfoPackage()
       );
     }
 
