@@ -105,6 +105,9 @@ export default class StaticListsScreen extends Component {
                     <Text style={styles.text}>
                         Status: {this.state.resultStatus}
                     </Text>
+                    <Text style={styles.text}>
+                        Expiration Date: {this.state.resultExpirationDate}
+                    </Text>
                 </View>
                 <Button containerStyle={styles.accbuttoncontainer}
                     style={styles.accbutton}
@@ -131,21 +134,15 @@ export default class StaticListsScreen extends Component {
 
     async _getSubscriptionStatusForList() {
       try {
-        var result = await Acc.analytics.staticlist.getSubscriptionStatusForLists(this.state.idString);
+        var lists = [];
+        lists.push(this.state.idString);
+        var result = await Acc.analytics.staticlist.getSubscriptionStatusForLists(lists);
         console.log(result);
-        if(result != null) {
-          if(result.status == 2) {
-             var subStatus = "Subscribed";
-          } else if(result.status == 4) {
-            var subStatus = "Unsubscribed";
-          } else {
-            var subStatus = "Doesn't exist"
-          }
-        }
         this.setState({
                         resultIdentifier: result.id,
                         resultName: result.name,
-                        resultStatus: subStatus,
+                        resultStatus: result.status,
+                        resultExpirationDate: result.expirationDate
                     }); 
       } catch (e) {
         console.log(e);
@@ -153,18 +150,19 @@ export default class StaticListsScreen extends Component {
     }
 
     _sendAction = () => {
-      console.log(typeof(this.state.date));
+      var lists = [];
+      lists.push(this.state.idString);
         if (this.state.index === 0) {
             if (this.state.switchIsOn)
-                Acc.analytics.staticlist.subscribeToLists(this.state.idString,
+                Acc.analytics.staticlist.subscribeToLists(lists,
                     this.state.date);
             else
-                Acc.analytics.staticlist.subscribeToLists(this.state.idString);
+                Acc.analytics.staticlist.subscribeToLists(lists);
         }
         else if (this.state.index === 1)
-            Acc.analytics.staticlist.unsubscribeFromLists(this.state.idString);
+            Acc.analytics.staticlist.unsubscribeFromLists(lists);
         else if (this.state.index === 2) {
-            this._getSubscriptionStatusForList(this.state.idString);
+            this._getSubscriptionStatusForList(lists);
         } 
     }
 }

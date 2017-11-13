@@ -16,6 +16,7 @@ import Button from 'react-native-button';
 import AnalyticsScreen from "./app/components/AnalyticsScreen";
 import TrackingScreen from './app/components/analytics/TrackingScreen'
 import StaticListsScreen from "./app/components/analytics/StaticListsScreen";
+import DeviceInfoScreen from "./app/components/analytics/DeviceInfoScreen";
 import InAppScreen from "./app/components/InAppScreen";
 import ListStaticListsScreen from "./app/components/analytics/ListStaticListsScreen";
 
@@ -52,6 +53,7 @@ const AccDemoApp = StackNavigator({
   Tracking: {screen: TrackingScreen},
   StaticLists: {screen: StaticListsScreen},
   ListStaticListsScreen: {screen: ListStaticListsScreen},
+  DeviceInfo: {screen: DeviceInfoScreen},
 });
 
 export default class App extends React.Component {

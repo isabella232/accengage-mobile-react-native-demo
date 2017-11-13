@@ -42,7 +42,7 @@ export default class ListStaticListsScreen extends Component {
                 </Button>
                 <FlatList
                   data={this.state.data}
-                  renderItem={({item}) => <Text style={styles.text}>Nom : {item.name + " | ExternalID : " + item.listID}</Text>}
+                  renderItem={({item}) => <Text style={styles.text}>Nom : {item.name + " | ExternalID : " + item.listID + " | Expiration Date : " + item.expirationDate}</Text>}
                 />
             </View>
         );

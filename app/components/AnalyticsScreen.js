@@ -24,6 +24,11 @@ export default class AnalyticsScreen extends Component {
                 style={styles.accbutton}>
           Static Lists
         </Button>
+        <Button onPress={() => navigate('DeviceInfo')}
+                containerStyle={styles.accbuttoncontainer}
+                style={styles.accbutton}>
+          Device Information
+        </Button>
       </View>
     );
   }
