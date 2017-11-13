@@ -38,9 +38,9 @@
 		2D02E4C81E0B4AEC006451C7 /* libRCTWebSocket-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3E991DF850E9000B6D8A /* libRCTWebSocket-tvOS.a */; };
 		2D02E4C91E0B4AEC006451C7 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		2DCD954D1E0B4F2C00145EB5 /* myappTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* myappTests.m */; };
+		5B505D1DC3F74B2A9DCAFB68 /* libRNAcc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C5DEA428F1742B780F4AB1D /* libRNAcc.a */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
-		89D45C53D9764A298B2A25E8 /* libRNAcc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8466F76E14094B219A595D93 /* libRNAcc.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 /* End PBXBuildFile section */
 
@@ -150,9 +150,9 @@
 			remoteGlobalIDString = 9936F32F1F5F2E5B0010BF04;
 			remoteInfo = "privatedata-tvOS";
 		};
-		0BF1DD9C1FB9FFEE00C82CAF /* PBXContainerItemProxy */ = {
+		0BF1DF5C1FBA09B800C82CAF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = F8417433E4944E59BFE297DD /* RNAcc.xcodeproj */;
+			containerPortal = 8A7B678398E84F9392CE4327 /* RNAcc.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RNAcc;
@@ -354,9 +354,9 @@
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
-		8466F76E14094B219A595D93 /* libRNAcc.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNAcc.a; sourceTree = "<group>"; };
+		8A7B678398E84F9392CE4327 /* RNAcc.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNAcc.xcodeproj; path = "../node_modules/react-native-acc/ios/RNAcc.xcodeproj"; sourceTree = "<group>"; };
+		8C5DEA428F1742B780F4AB1D /* libRNAcc.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNAcc.a; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
-		F8417433E4944E59BFE297DD /* RNAcc.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNAcc.xcodeproj; path = "../node_modules/react-native-acc/ios/RNAcc.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -387,7 +387,7 @@
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				0B4832DF1FB5AD1800D5BEAE /* Accengage.framework in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
-				89D45C53D9764A298B2A25E8 /* libRNAcc.a in Frameworks */,
+				5B505D1DC3F74B2A9DCAFB68 /* libRNAcc.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,15 +478,15 @@
 		0B11CEE41FB5A68700E99988 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				8466F76E14094B219A595D93 /* libRNAcc.a */,
+				8C5DEA428F1742B780F4AB1D /* libRNAcc.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
-		0BF1DD991FB9FFEE00C82CAF /* Products */ = {
+		0BF1DF591FBA09B800C82CAF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0BF1DD9D1FB9FFEE00C82CAF /* libRNAcc.a */,
+				0BF1DF5D1FBA09B800C82CAF /* libRNAcc.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -579,7 +579,7 @@
 				832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */,
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
-				F8417433E4944E59BFE297DD /* RNAcc.xcodeproj */,
+				8A7B678398E84F9392CE4327 /* RNAcc.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -793,8 +793,8 @@
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
 				{
-					ProductGroup = 0BF1DD991FB9FFEE00C82CAF /* Products */;
-					ProjectRef = F8417433E4944E59BFE297DD /* RNAcc.xcodeproj */;
+					ProductGroup = 0BF1DF591FBA09B800C82CAF /* Products */;
+					ProjectRef = 8A7B678398E84F9392CE4327 /* RNAcc.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -906,11 +906,11 @@
 			remoteRef = 0B11CF471FB5A98900E99988 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		0BF1DD9D1FB9FFEE00C82CAF /* libRNAcc.a */ = {
+		0BF1DF5D1FBA09B800C82CAF /* libRNAcc.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRNAcc.a;
-			remoteRef = 0BF1DD9C1FB9FFEE00C82CAF /* PBXContainerItemProxy */;
+			remoteRef = 0BF1DF5C1FBA09B800C82CAF /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		139105C11AF99BAD00B5F7CC /* libRCTSettings.a */ = {
