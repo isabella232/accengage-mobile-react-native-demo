@@ -29,14 +29,14 @@ function trackLead() {
 }
 
 function trackCart() {
-  var item = {id: "07", label: "Reebook", category: "Shoes", currency: "EUR", price: 39.99, quantity: 3};
-  Acc.analytics.tracking.trackCart("02", item);
+  var item = {id: "07", label: "Reebook", category: "Shoes", price: 39.99, quantity: 3};
+  Acc.analytics.tracking.trackCart("02", "EUR", item);
 }
 
 function trackPurchase() {
-  var item1 = {id: "01", label: "Label#1", category: "Cat#1", currency: "EUR", price: 9.99, quantity: 2};
-  var item2 = {id: "02", label: "Label#2", category: "Cat#1", currency: "EUR", price: 86.78, quantity: 1};
-  var item3 = {id: "03", label: "Label#3", category: "Cat#5", currency: "EUR", price: 40.09, quantity: 1};
+  var item1 = {id: "01", label: "Label#1", category: "Cat#1", price: 9.99, quantity: 2};
+  var item2 = {id: "02", label: "Label#2", category: "Cat#1", price: 86.78, quantity: 1};
+  var item3 = {id: "03", label: "Label#3", category: "Cat#5", price: 40.09, quantity: 1};
   Acc.analytics.tracking.trackPurchase("03", "EUR", 136.8, [item1, item2, item3]);
 }
 
