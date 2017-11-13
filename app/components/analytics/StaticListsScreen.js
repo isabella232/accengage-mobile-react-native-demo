@@ -157,7 +157,6 @@ export default class StaticListsScreen extends Component {
             if (this.state.switchIsOn) {
                 var list = {listId: this.state.idString, expirationDate: Moment(this.state.date, 'YYYY-MM-DD').unix()};
                 lists.push(list);
-                console.log(Moment(this.state.date, 'YYYY-MM-DD').unix());
                 Acc.analytics.staticlist.subscribeToLists(lists);
             }
             else {
