@@ -5,6 +5,7 @@ import {
   View
 } from 'react-native';
 import Button from 'react-native-button';
+import styles from './../../Styles';
 
 export default class AnalyticsScreen extends Component {
   static navigationOptions = ({navigation}) => ({
@@ -29,29 +30,12 @@ export default class AnalyticsScreen extends Component {
                 style={styles.accbutton}>
           Device Information
         </Button>
+        <Button onPress={() => navigate('Views')}
+                containerStyle={styles.accbuttoncontainer}
+                style={styles.accbutton}>
+          Views
+        </Button>
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  accbuttoncontainer: {
-    margin: 5,
-    padding: 10,
-    width: 200,
-    height: 45,
-    overflow: 'hidden',
-    borderRadius: 4,
-    backgroundColor: '#0000ff',
-  },
-  accbutton: {
-    fontSize: 20,
-    color: 'white',
-  },
-});

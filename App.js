@@ -12,6 +12,9 @@ import {
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import Button from 'react-native-button';
+import Acc from 'react-native-acc';
+
+import styles from './Styles';
 
 import AnalyticsScreen from "./app/components/AnalyticsScreen";
 import TrackingScreen from './app/components/analytics/TrackingScreen'
@@ -19,13 +22,22 @@ import StaticListsScreen from "./app/components/analytics/StaticListsScreen";
 import DeviceInfoScreen from "./app/components/analytics/DeviceInfoScreen";
 import InAppScreen from "./app/components/InAppScreen";
 import ListStaticListsScreen from "./app/components/analytics/ListStaticListsScreen";
+import View1Screen from "./app/components/analytics/View1Screen";
+import View2Screen from "./app/components/analytics/View2Screen";
 
 class HomeScreen extends Component {
   static navigationOptions = {
     title: 'Accengage Demo',
   };
+
+  constructor() {
+    super();
+    this._disableInAppDisplay = this._disableInAppDisplay.bind(this);
+  }
+
   render() {
       const { navigate } = this.props.navigation;
+      this._disableInAppDisplay();
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
@@ -44,6 +56,14 @@ class HomeScreen extends Component {
       </View>
     );
   }
+
+  _disableInAppDisplay() {
+    if (!this.isInAppEnabled) {
+      Acc.inapp.setInAppDisplayEnabled(true);
+      this.isInAppEnabled = true;
+    }
+  }
+
 }
 
 const AccDemoApp = StackNavigator({
@@ -54,42 +74,13 @@ const AccDemoApp = StackNavigator({
   StaticLists: {screen: StaticListsScreen},
   ListStaticListsScreen: {screen: ListStaticListsScreen},
   DeviceInfo: {screen: DeviceInfoScreen},
+  Views: {screen: View1Screen},
+  View2: {screen: View2Screen},
 });
 
 export default class App extends React.Component {
   render() {
     return <AccDemoApp />;
   }
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-  accbuttoncontainer: {
-      margin: 5,
-      padding: 10,
-      width: 200,
-      height: 45,
-      overflow: 'hidden',
-      borderRadius: 4,
-      backgroundColor: '#0000ff',
-  },
-  accbutton: {
-      fontSize: 20,
-      color: 'white',
-  },
-});
+}

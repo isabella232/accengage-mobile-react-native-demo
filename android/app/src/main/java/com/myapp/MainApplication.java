@@ -10,6 +10,7 @@ import com.reactlibrary.RNAccPackage;
 import com.reactlibrary.analytics.RNAccDeviceInfoPackage;
 import com.reactlibrary.analytics.RNAccStaticListsPackage;
 import com.reactlibrary.analytics.RNAccTrackingPackage;
+import com.reactlibrary.analytics.RNAccViewsPackage;
 import com.reactlibrary.inapp.RNAccInAppPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -35,7 +36,8 @@ public class MainApplication extends Application implements ReactApplication {
           new RNAccPackage(),
           new RNAccTrackingPackage(),
           new RNAccStaticListsPackage(),
-          new RNAccDeviceInfoPackage()
+          new RNAccDeviceInfoPackage(),
+          new RNAccViewsPackage()
       );
     }
 
