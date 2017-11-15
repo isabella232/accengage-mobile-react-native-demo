@@ -3,19 +3,19 @@ package com.myapp;
 import android.app.Application;
 import android.content.res.Configuration;
 
+import com.accengage.react.push.RNAccPushGcmPackage;
 import com.ad4screen.sdk.A4S;
 import com.facebook.react.ReactApplication;
-import com.reactlibrary.BuildConfig;
+import com.facebook.react.ReactNativeHost;
+import com.facebook.react.ReactPackage;
+import com.facebook.react.shell.MainReactPackage;
+import com.facebook.soloader.SoLoader;
 import com.reactlibrary.RNAccPackage;
 import com.reactlibrary.analytics.RNAccDeviceInfoPackage;
 import com.reactlibrary.analytics.RNAccStaticListsPackage;
 import com.reactlibrary.analytics.RNAccTrackingPackage;
 import com.reactlibrary.analytics.RNAccViewsPackage;
 import com.reactlibrary.inapp.RNAccInAppPackage;
-import com.facebook.react.ReactNativeHost;
-import com.facebook.react.ReactPackage;
-import com.facebook.react.shell.MainReactPackage;
-import com.facebook.soloader.SoLoader;
 
 import java.util.Arrays;
 import java.util.List;
@@ -37,7 +37,8 @@ public class MainApplication extends Application implements ReactApplication {
           new RNAccTrackingPackage(),
           new RNAccStaticListsPackage(),
           new RNAccDeviceInfoPackage(),
-          new RNAccViewsPackage()
+          new RNAccViewsPackage(),
+          new RNAccPushGcmPackage()
       );
     }
 
