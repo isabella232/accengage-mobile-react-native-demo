@@ -6,7 +6,6 @@
 
 import React, { Component } from 'react';
 import {
-  StyleSheet,
   Text,
   View
 } from 'react-native';
@@ -16,6 +15,7 @@ import Acc from 'react-native-acc';
 
 import styles from './Styles';
 
+import PushScreen from "./app/components/PushScreen";
 import AnalyticsScreen from "./app/components/AnalyticsScreen";
 import TrackingScreen from './app/components/analytics/TrackingScreen'
 import StaticListsScreen from "./app/components/analytics/StaticListsScreen";
@@ -43,6 +43,11 @@ class HomeScreen extends Component {
         <Text style={styles.welcome}>
           Accengage React Native Demo
         </Text>
+        <Button onPress={() => navigate('Push')}
+                containerStyle={styles.accbuttoncontainer}
+                style={styles.accbutton}>
+          Push controls
+        </Button>
         <Button onPress={() => navigate('InApp')}
                 containerStyle={styles.accbuttoncontainer}
                 style={styles.accbutton}>
@@ -68,6 +73,7 @@ class HomeScreen extends Component {
 
 const AccDemoApp = StackNavigator({
   Home: { screen: HomeScreen },
+  Push: {screen: PushScreen},
   InApp: {screen: InAppScreen},
   Analytics: {screen: AnalyticsScreen},
   Tracking: {screen: TrackingScreen},
