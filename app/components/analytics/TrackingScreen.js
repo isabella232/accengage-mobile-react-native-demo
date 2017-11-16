@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 import Button from 'react-native-button';
 import Acc from 'react-native-acc';
+import styles from './../../../Styles';
 
 function trackEvent() {
   var papa = {
@@ -74,30 +75,3 @@ export default class TrackingScreen extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  accbuttoncontainer: {
-    margin: 5,
-    padding: 10,
-    width: 200,
-    height: 45,
-    overflow: 'hidden',
-    borderRadius: 4,
-    backgroundColor: '#0000ff',
-  },
-  accbutton: {
-    fontSize: 20,
-    color: 'white',
-  },
-});

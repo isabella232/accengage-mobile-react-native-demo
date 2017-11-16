@@ -1,5 +1,7 @@
 rootProject.name = 'myapp'
 include ':react-native-acc'
 project(':react-native-acc').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-acc/android')
+include ':react-native-acc-push-gcm'
+project(':react-native-acc-push-gcm').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-acc-push-gcm/android')
 
 include ':app'
