@@ -74,13 +74,44 @@ const AccDemoApp = StackNavigator({
   StaticLists: {screen: StaticListsScreen},
   ListStaticListsScreen: {screen: ListStaticListsScreen},
   DeviceInfo: {screen: DeviceInfoScreen},
-  Views: {screen: View1Screen},
+  View1: {screen: View1Screen},
   View2: {screen: View2Screen},
 });
 
+function getCurrentRouteName(navigationState) {
+    if (!navigationState) {
+        return null;
+    }
+    const route = navigationState.routes[navigationState.index];
+    // dive into nested navigators
+    if (route.routes) {
+        return getCurrentRouteName(route);
+    }
+    return route.routeName;
+}
+
 export default class App extends React.Component {
   render() {
-    return <AccDemoApp />;
+    return <AccDemoApp
+        onNavigationStateChange={(prevState, currentState) => {
+            const currentScreen = getCurrentRouteName(currentState);
+            const prevScreen = getCurrentRouteName(prevState);
+
+            if (prevScreen !== currentScreen) {
+              if (currentScreen === "View1") {
+                Acc.analytics.views.setView(currentScreen);
+              }
+              if (currentScreen === "View2") {
+                Acc.analytics.views.setView(currentScreen);
+              }
+                if (prevScreen === "View1") {
+                    Acc.analytics.views.dismissView(prevScreen);
+                }
+                if (prevScreen === "View2") {
+                    Acc.analytics.views.dismissView(prevScreen);
+                }
+            }
+        }}/>;
   }
 
 }

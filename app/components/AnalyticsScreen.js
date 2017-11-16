@@ -30,10 +30,10 @@ export default class AnalyticsScreen extends Component {
                 style={styles.accbutton}>
           Device Information
         </Button>
-        <Button onPress={() => navigate('Views')}
+        <Button onPress={() => navigate('View1')}
                 containerStyle={styles.accbuttoncontainer}
                 style={styles.accbutton}>
-          Views
+          View1
         </Button>
       </View>
     );
