@@ -16,6 +16,7 @@ import com.reactlibrary.analytics.RNAccStaticListsPackage;
 import com.reactlibrary.analytics.RNAccTrackingPackage;
 import com.reactlibrary.analytics.RNAccViewsPackage;
 import com.reactlibrary.inapp.RNAccInAppPackage;
+import com.reactlibrary.push.RNAccPushPackage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -38,6 +39,7 @@ public class MainApplication extends Application implements ReactApplication {
           new RNAccStaticListsPackage(),
           new RNAccDeviceInfoPackage(),
           new RNAccViewsPackage(),
+          new RNAccPushPackage(),
           new RNAccPushGcmPackage()
       );
     }
