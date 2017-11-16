@@ -104,12 +104,12 @@ export default class App extends React.Component {
               if (currentScreen === "View2") {
                 Acc.analytics.views.setView(currentScreen);
               }
-                if (prevScreen === "View1") {
-                    Acc.analytics.views.dismissView(prevScreen);
-                }
-                if (prevScreen === "View2") {
-                    Acc.analytics.views.dismissView(prevScreen);
-                }
+              if (prevScreen === "View1") {
+                Acc.analytics.views.dismissView(prevScreen);
+              }
+              if (prevScreen === "View2") {
+                Acc.analytics.views.dismissView(prevScreen);
+              }
             }
         }}/>;
   }
