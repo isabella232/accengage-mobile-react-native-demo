@@ -19,11 +19,14 @@ export default class PushScreen extends Component {
       textEnabledName : '',
       buttonLockedName : '',
       textLockedName : '',
-      textToken : '<token>',
+      textToken : '',
     };
     Acc.push.isEnabled().then(enabled => {
       this.isPushEnabled = enabled;
       this._updateEnabledNames();
+      if (this.isPushEnabled) {
+        this._getToken();
+      }
     });
     Acc.push.isLocked().then(locked => {
       this.isPushLocked = locked;
@@ -31,6 +34,7 @@ export default class PushScreen extends Component {
     });
     this._setEnabled = this._setEnabled.bind(this);
     this._setLocked = this._setLocked.bind(this);
+    this._getToken = this._getToken.bind(this);
   }
 
   _updateEnabledNames() {
@@ -67,7 +71,7 @@ export default class PushScreen extends Component {
 
   _getToken() {
     Acc.push.getToken().then(token => {
-
+      this.setState({textToken : token})
     });
   }
 
