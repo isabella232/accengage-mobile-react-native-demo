@@ -7,7 +7,8 @@
 import React, { Component } from 'react';
 import {
   Text,
-  View
+  View,
+  DeviceEventEmitter
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import Button from 'react-native-button';
@@ -33,6 +34,10 @@ class HomeScreen extends Component {
   constructor() {
     super();
     this._disableInAppDisplay = this._disableInAppDisplay.bind(this);
+
+    DeviceEventEmitter.addListener('com.ad4screen.sdk.intent.category.PUSH_NOTIFICATIONS', function(event) {
+      console.log("ActionsReceiver " + JSON.stringify(event));
+    });
   }
 
   render() {
