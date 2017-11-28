@@ -76,8 +76,15 @@ export default class PushScreen extends Component {
   }
 
   render() {
+    const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
+        <Button
+          onPress={() => navigate('PushEvents')}
+          containerStyle={styles.accbuttoncontainer}
+          style={styles.accbutton}>
+          Push Events
+        </Button>
         <Button
           onPress={this._setEnabled}
           containerStyle={styles.accbuttoncontainer}

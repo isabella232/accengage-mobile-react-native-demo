@@ -10,9 +10,10 @@
     "moment": "^2.19.1",
     "react": "^16.0.0",
     "react-native": "^0.50.3",
-    "react-native-acc": "file:///Users/mandrew/Projects/andronblog/reactnative/react-native-acc",
+    "react-native-acc": "file:///Users/bastien/Documents/accengage/accengage-mobile-react-native",
     "react-native-acc-push-gcm": "file:///Users/mandrew/Projects/andronblog/reactnative/react-native-acc-push-gcm",
     "react-native-button": "^2.1.0",
+    "react-native-checkbox": "^2.0.0",
     "react-native-datepicker": "^1.6.0",
     "react-navigation": "^1.0.0-beta.19"
   },
