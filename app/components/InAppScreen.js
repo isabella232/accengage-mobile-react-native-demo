@@ -76,8 +76,15 @@ export default class InAppScreen extends Component {
   }
 
   render() {
+    const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
+        <Button
+          onPress={() => navigate('InAppEvents')}
+          containerStyle={styles.accbuttoncontainer}
+          style={styles.accbutton}>
+          InApp Events
+        </Button>
         <Button
           onPress={setInAppDisplayedCallback}
           containerStyle={styles.accbuttoncontainer}

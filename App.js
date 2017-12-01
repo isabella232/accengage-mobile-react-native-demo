@@ -26,6 +26,7 @@ import ListStaticListsScreen from "./app/components/analytics/ListStaticListsScr
 import View1Screen from "./app/components/analytics/View1Screen";
 import View2Screen from "./app/components/analytics/View2Screen";
 import PushEventsScreen from "./app/components/PushEventsScreen.js";
+import InAppEventsScreen from "./app/components/InAppEventsScreen.js";
 
 class HomeScreen extends Component {
   static navigationOptions = {
@@ -89,6 +90,7 @@ const AccDemoApp = StackNavigator({
   View1: {screen: View1Screen},
   View2: {screen: View2Screen},
   PushEvents: {screen: PushEventsScreen},
+  InAppEvents: {screen: InAppEventsScreen},
 });
 
 function getCurrentRouteName(navigationState) {
