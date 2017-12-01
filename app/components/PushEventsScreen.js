@@ -22,7 +22,7 @@ export default class PushEventsScreen extends Component {
       clickedEventEnabled: false,
       textCustomParams : '',
     };
-    this.pushManagerEmitter = new NativeEventEmitter(NativeModules.RNAccPush);
+    this.pushManagerEmitter = new NativeEventEmitter(NativeModules.RNAcc);
     this._setReceived = this._setReceived.bind(this);
     this._setClicked = this._setClicked.bind(this);
   }
@@ -33,12 +33,13 @@ export default class PushEventsScreen extends Component {
     if (!checked) {
       this.setState({
         receivedEventSubscription : this.pushManagerEmitter.addListener(
-          'didReceivedNotification',
-          (reminder) => this.setState({ textCustomParams :notification.customParams})
+          'didReceiveNotification',
+          (reminder) => this.setState({ textCustomParams : JSON.stringify(reminder.notification.customParams)})
         )
       });
     } else {
       this.state.receivedEventSubscription.remove();
+      this.setState({ textCustomParams : ''});
     }
   }
 
@@ -48,12 +49,13 @@ export default class PushEventsScreen extends Component {
     if (!checked) {
       this.setState({
         clickedEventSubscription : this.pushManagerEmitter.addListener(
-          'didClickedNotification',
-          (reminder) => this.setState({ textCustomParams :notification.customParams})
+          'didClickNotification',
+          (reminder) => this.setState({ textCustomParams : JSON.stringify(reminder.notification.customParams)})
         )
       });
     } else {
       this.state.clickedEventSubscription.remove();
+      this.setState({ textCustomParams : ''});
     }
   }
 
