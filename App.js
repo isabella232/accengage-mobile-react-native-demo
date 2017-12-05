@@ -41,6 +41,8 @@ class HomeScreen extends Component {
     DeviceEventEmitter.addListener('com.ad4screen.sdk.intent.category.PUSH_NOTIFICATIONS', function(event) {
       console.log("ActionsReceiver " + JSON.stringify(event));
     });
+
+    Acc.push.setEnabled(true);
   }
 
   render() {
