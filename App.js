@@ -25,8 +25,9 @@ import InAppScreen from "./app/components/InAppScreen";
 import ListStaticListsScreen from "./app/components/analytics/ListStaticListsScreen";
 import View1Screen from "./app/components/analytics/View1Screen";
 import View2Screen from "./app/components/analytics/View2Screen";
-import PushEventsScreen from "./app/components/PushEventsScreen.js";
-import InAppEventsScreen from "./app/components/InAppEventsScreen.js";
+import PushEventsScreen from "./app/components/push/PushEventsScreen.js";
+import InAppEventsScreen from "./app/components/inapp/InAppEventsScreen.js";
+import ControlScreen from "./app/components/ControlScreen";
 
 class HomeScreen extends Component {
   static navigationOptions = {
@@ -65,6 +66,11 @@ class HomeScreen extends Component {
           style={styles.accbutton}>
           Analytics
         </Button>
+        <Button onPress={() => navigate('Control')}
+                containerStyle={styles.accbuttoncontainer}
+                style={styles.accbutton}>
+          Control
+        </Button>
       </View>
     );
   }
@@ -91,6 +97,7 @@ const AccDemoApp = StackNavigator({
   View2: {screen: View2Screen},
   PushEvents: {screen: PushEventsScreen},
   InAppEvents: {screen: InAppEventsScreen},
+  Control: {screen: ControlScreen},
 });
 
 function getCurrentRouteName(navigationState) {
