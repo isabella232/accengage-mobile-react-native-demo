@@ -100,9 +100,15 @@ export default class InAppEventsScreen extends Component {
 
   componentWillUnmount() {
     this._clear();
-    this.state.displayEventSubscription.remove();
-    this.state.clickEventSubscription.remove();
-    this.state.closeEventSubscription.remove();
+    if (this.state.displayEventSubscription !== undefined) {
+      this.state.displayEventSubscription.remove();
+    }
+    if (this.state.clickEventSubscription !== undefined) {
+      this.state.clickEventSubscription.remove();
+    }
+    if (this.state.closeEventSubscription !== undefined) {
+      this.state.closeEventSubscription.remove();
+    }
   }
 
   render() {

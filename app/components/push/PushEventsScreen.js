@@ -16,8 +16,8 @@ export default class PushEventsScreen extends Component {
   constructor() {
     super();
     this.state = {
-      receiveEventSubscription : null,
-      clickEventSubscription : null,
+      receiveEventSubscription : undefined,
+      clickEventSubscription : undefined,
       receiveEventEnabled: false,
       clickEventEnabled: false,
       textTypeEvent : '',
@@ -77,8 +77,12 @@ export default class PushEventsScreen extends Component {
 
   componentWillUnmount() {
     this._clear();
-    this.state.receiveEventSubscription.remove();
-    this.state.clickEventSubscription.remove();
+    if (this.state.receiveEventSubscription !== undefined) {
+      this.state.receiveEventSubscription.remove();
+    }
+    if (this.state.clickEventSubscription !== undefined) {
+      this.state.clickEventSubscription.remove();
+    }
   }
 
   render() {
