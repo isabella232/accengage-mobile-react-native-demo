@@ -6,6 +6,7 @@ import android.content.res.Configuration;
 import com.accengage.react.push.RNAccPushGcmPackage;
 import com.ad4screen.sdk.A4S;
 import com.facebook.react.ReactApplication;
+import com.reactlibrary.RNAccDeviceInfoPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -33,6 +34,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNAccDeviceInfoPackage(),
           new RNAccInAppPackage(),
           new RNAccPackage(),
           new RNAccTrackingPackage(),
