@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import {
   View,
   Text,
+  DeviceEventEmitter,
   NativeEventEmitter,
-  NativeModules
+  NativeModules,
+  Platform
 } from 'react-native';
 import CheckBox from 'react-native-checkbox';
 import styles from '../../../Styles';
@@ -31,41 +33,79 @@ export default class PushEventsScreen extends Component {
 
   _setReceive(checked) {
     this.setState({ receiveEventEnabled : !checked });
+    
+    
+     if (Platform.OS == "ios") {
+      if (!checked) {
+        this.setState({
+          receiveEventSubscription : this.pushManagerEmitter.addListener(
+            'didReceiveNotification',
+            (reminder) => this.setState({
+              textTypeEvent : "Receive",
+              textNotifId : reminder.notification.notificationId,
+              textCustomParams : JSON.stringify(reminder.notification.customParams)
+            })
+            )
+        });
+      } else {
+        this.state.receiveEventSubscription.remove();
+        this.setState({ textCustomParams : ''});
+      }
 
-    if (!checked) {
-      this.setState({
-        receiveEventSubscription : this.pushManagerEmitter.addListener(
-          'didReceiveNotification',
-          (reminder) => this.setState({
+    } else if (Platform.OS == "android") {
+      if (!checked) {
+        this.receiveEventSubscription = DeviceEventEmitter.addListener('com.ad4screen.sdk.intent.action.DISPLAYED', (e: Event) => {
+          this.setState({
             textTypeEvent : "Receive",
-            textNotifId : reminder.notification.notificationId,
-            textCustomParams : JSON.stringify(reminder.notification.customParams)
+            textNotifId: e.pushID
           })
-        )
-      });
-    } else {
-      this.state.receiveEventSubscription.remove();
-      this.setState({ textCustomParams : ''});
+        });
+      }
+      else {
+        this.receiveEventSubscription.remove();
+        this.setState({ textTypeEvent: '',
+          textNotifId: ''});
+      }
     }
+    
+
+    
   }
 
   _setClick(checked) {
     this.setState({ clickEventEnabled : !checked });
-
-    if (!checked) {
-      this.setState({
-        clickEventSubscription : this.pushManagerEmitter.addListener(
-          'didClickNotification',
-          (reminder) => this.setState({
-            textTypeEvent : "Click",
-            textNotifId : reminder.notification.notificationId,
-            textCustomParams : JSON.stringify(reminder.notification.customParams)
+    if (Platform.OS == "ios") {
+      if (!checked) {
+        this.setState({
+          clickEventSubscription : this.pushManagerEmitter.addListener(
+            'didClickNotification',
+            (reminder) => this.setState({
+              textTypeEvent : "Click",
+              textNotifId : reminder.notification.notificationId,
+              textCustomParams : JSON.stringify(reminder.notification.customParams)
+            })
+          )
+        });
+      } else {
+        this.state.clickEventSubscription.remove();
+        this.setState({ textCustomParams : ''});
+      }
+    }
+    else if (Platform.OS == "android") {
+      if (!checked) {
+        console.log("Listener added");
+        this.receiveEventSubscription = DeviceEventEmitter.addListener('com.ad4screen.sdk.intent.action.CLICKED', (e: Event) => {
+          this.setState({
+            textTypeEvent : "Clicked",
+            textNotifId: e.pushID
           })
-        )
-      });
-    } else {
-      this.state.clickEventSubscription.remove();
-      this.setState({ textCustomParams : ''});
+        });
+      }
+      else {
+        this.receiveEventSubscription.remove();
+        this.setState({ textTypeEvent: '',
+          textNotifId: ''});
+      }
     }
   }
 
