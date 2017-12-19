@@ -55,7 +55,7 @@ export default class InAppEventsScreen extends Component {
       }
     } else if (Platform.OS == "android") {
         if (!checked) {
-          this.receiveEventSubscription = DeviceEventEmitter.addListener('com.ad4screen.sdk.intent.action.DISPLAYED', (e: Event) => {
+          this.receiveEventSubscription = DeviceEventEmitter.addListener('didInAppDisplay', (e: Event) => {
               this.setState({
               textTypeEvent : "Receive",
               })
@@ -91,7 +91,7 @@ export default class InAppEventsScreen extends Component {
     } else if (Platform.OS == "android") {
         if (!checked) {
             console.log("attention on va click");
-            this.receiveEventSubscription = DeviceEventEmitter.addListener('com.ad4screen.sdk.intent.action.CLICKED', (e: Event) => {
+            this.receiveEventSubscription = DeviceEventEmitter.addListener('didInAppClick', (e: Event) => {
               console.log("clicked !");
                 this.setState({
                 textTypeEvent : "Click",
@@ -127,7 +127,7 @@ export default class InAppEventsScreen extends Component {
       }
     } else if (Platform.OS == "android") {
       if (!checked) {
-        this.receiveEventSubscription = DeviceEventEmitter.addListener('com.ad4screen.sdk.intent.action.CLOSED', (e: Event) => {
+        this.receiveEventSubscription = DeviceEventEmitter.addListener('didInAppClose', (e: Event) => {
             console.log("Closed !");
             this.setState({
               textTypeEvent : "Closed",

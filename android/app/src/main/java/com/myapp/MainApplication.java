@@ -3,14 +3,13 @@ package com.myapp;
 import android.app.Application;
 import android.content.res.Configuration;
 
-import com.accengage.react.push.RNAccPushGcmPackage;
-import com.ad4screen.sdk.A4S;
 import com.facebook.react.ReactApplication;
-import com.reactlibrary.RNAccDeviceInfoPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
+import com.ad4screen.sdk.A4S;
+import com.accengage.react.push.RNAccPushGcmPackage;
 import com.reactlibrary.RNAccPackage;
 import com.reactlibrary.analytics.RNAccDeviceInfoPackage;
 import com.reactlibrary.analytics.RNAccStaticListsPackage;
@@ -33,16 +32,15 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
-          new MainReactPackage(),
-            new RNAccDeviceInfoPackage(),
-          new RNAccInAppPackage(),
-          new RNAccPackage(),
-          new RNAccTrackingPackage(),
-          new RNAccStaticListsPackage(),
-          new RNAccDeviceInfoPackage(),
-          new RNAccViewsPackage(),
-          new RNAccPushPackage(),
-          new RNAccPushGcmPackage()
+              new MainReactPackage(),
+              new RNAccInAppPackage(),
+              new RNAccPackage(),
+              new RNAccTrackingPackage(),
+              new RNAccStaticListsPackage(),
+              new RNAccDeviceInfoPackage(),
+              new RNAccViewsPackage(),
+              new RNAccPushPackage(),
+              new RNAccPushGcmPackage()
       );
     }
 
@@ -59,10 +57,10 @@ public class MainApplication extends Application implements ReactApplication {
 
   @Override
   public void onConfigurationChanged(Configuration newConfig) {
-      if (A4S.isInA4SProcess(this)) {
-          return;
-      }
-      super.onConfigurationChanged(newConfig);
+    if (A4S.isInA4SProcess(this)) {
+      return;
+    }
+    super.onConfigurationChanged(newConfig);
   }
 
   @Override

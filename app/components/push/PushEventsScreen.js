@@ -54,7 +54,7 @@ export default class PushEventsScreen extends Component {
 
     } else if (Platform.OS == "android") {
       if (!checked) {
-        this.receiveEventSubscription = DeviceEventEmitter.addListener('com.ad4screen.sdk.intent.action.DISPLAYED', (e: Event) => {
+        this.receiveEventSubscription = DeviceEventEmitter.addListener('didReceiveNotification', (e: Event) => {
           this.setState({
             textTypeEvent : "Receive",
             textNotifId: e.pushID
@@ -67,9 +67,6 @@ export default class PushEventsScreen extends Component {
           textNotifId: ''});
       }
     }
-    
-
-    
   }
 
   _setClick(checked) {
@@ -94,7 +91,7 @@ export default class PushEventsScreen extends Component {
     else if (Platform.OS == "android") {
       if (!checked) {
         console.log("Listener added");
-        this.receiveEventSubscription = DeviceEventEmitter.addListener('com.ad4screen.sdk.intent.action.CLICKED', (e: Event) => {
+        this.receiveEventSubscription = DeviceEventEmitter.addListener('didClickNotification', (e: Event) => {
           this.setState({
             textTypeEvent : "Clicked",
             textNotifId: e.pushID
