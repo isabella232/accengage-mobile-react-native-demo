@@ -78,10 +78,10 @@ export default class ControlScreen extends Component {
 
   _updateBeaconServiceEnabledNames() {
     if (this.beaconServiceEnabled) {
-      this.setState({textBeaconServiceEnabledName : 'Geofence service is enabled'});
+      this.setState({textBeaconServiceEnabledName : 'Beacon service is enabled'});
       this.setState({buttonBeaconServiceEnabledName : 'Disable'});
     } else {
-      this.setState({textBeaconServiceEnabledName : 'Geofence service is disabled'});
+      this.setState({textBeaconServiceEnabledName : 'Beacon service is disabled'});
       this.setState({buttonBeaconServiceEnabledName : 'Enable'});
     }
   }
