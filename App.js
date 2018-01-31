@@ -5,6 +5,7 @@
  */
 
 import React, { Component } from 'react';
+import { PermissionsAndroid, Platform } from 'react-native';
 import {
   Text,
   View,
@@ -43,6 +44,10 @@ class HomeScreen extends Component {
 
     Acc.inapp.setInAppDisplayEnabled(true);
     Acc.push.setEnabled(true);
+
+    if (Platform.OS === 'android') {
+      requestLocationPermission().then();
+    }
   }
 
   render() {
@@ -103,6 +108,26 @@ function getCurrentRouteName(navigationState) {
         return getCurrentRouteName(route);
     }
     return route.routeName;
+}
+
+async function requestLocationPermission() {
+  try {
+    const granted = await PermissionsAndroid.request(
+      PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+      {
+        'title': 'Location Permission',
+        'message': 'MyApp needs access for precise location to work with geofences and beacons'
+      }
+    )
+    if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+      console.log("ACCESS_FINE_LOCATION is granted")
+    } else {
+      console.log("ACCESS_FINE_LOCATION is denied")
+    }
+  } catch (err) {
+    console.log("ACCESS_FINE_LOCATION err: " + err);
+    console.warn(err);
+  }
 }
 
 export default class App extends React.Component {
