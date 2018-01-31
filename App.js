@@ -36,18 +36,17 @@ class HomeScreen extends Component {
 
   constructor() {
     super();
-    this._disableInAppDisplay = this._disableInAppDisplay.bind(this);
 
     DeviceEventEmitter.addListener('com.ad4screen.sdk.intent.category.PUSH_NOTIFICATIONS', function(event) {
       console.log("ActionsReceiver " + JSON.stringify(event));
     });
 
+    Acc.inapp.setInAppDisplayEnabled(true);
     Acc.push.setEnabled(true);
   }
 
   render() {
-      const { navigate } = this.props.navigation;
-      this._disableInAppDisplay();
+    const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
@@ -76,14 +75,6 @@ class HomeScreen extends Component {
       </View>
     );
   }
-
-  _disableInAppDisplay() {
-    if (!this.isInAppEnabled) {
-      Acc.inapp.setInAppDisplayEnabled(true);
-      this.isInAppEnabled = true;
-    }
-  }
-
 }
 
 const AccDemoApp = StackNavigator({
