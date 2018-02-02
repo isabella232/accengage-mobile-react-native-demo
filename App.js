@@ -42,7 +42,7 @@ class HomeScreen extends Component {
       console.log("ActionsReceiver " + JSON.stringify(event));
     });
 
-    Acc.inapp.setInAppDisplayEnabled(true);
+    Acc.inapp.setLocked(false);
     Acc.push.setEnabled(true);
 
     if (Platform.OS === 'android') {

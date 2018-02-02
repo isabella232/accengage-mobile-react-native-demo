@@ -7,23 +7,23 @@ import Acc from 'react-native-acc';
 import styles from './../../Styles';
 
 function setInAppDisplayedCallback() {
-  Acc.inapp.setInAppDisplayedCallback(
+  Acc.inapp.setDisplayedCallback(
     (inapp) => {
-      console.log("setInAppDisplayedCallback inapp: " + JSON.stringify(inapp));
+      console.log("setDisplayedCallback inapp: " + JSON.stringify(inapp));
     });
 }
 
 function setInAppClickedCallback() {
-  Acc.inapp.setInAppClickedCallback(
+  Acc.inapp.setClickedCallback(
     (inapp) => {
-      console.log("setInAppClickedCallback inapp: " + JSON.stringify(inapp));
+      console.log("setClickedCallback inapp: " + JSON.stringify(inapp));
     });
 }
 
 function setInAppClosedCallback() {
-  Acc.inapp.setInAppClosedCallback(
+  Acc.inapp.setClosedCallback(
     (inapp) => {
-      console.log("setInAppClosedCallback inapp: " + JSON.stringify(inapp));
+      console.log("setClosedCallback inapp: " + JSON.stringify(inapp));
     });
 }
 
@@ -36,42 +36,42 @@ export default class InAppScreen extends Component {
 
   constructor() {
     super();
-    this.isInAppEnabled = false;
+    this.isInAppLocked = false;
     this.state = {
-      buttonIsInAppEnabledName : 'Enable/Disable InApps',
+      buttonIsInAppLockedName : 'Lock/Unlock InApps',
     };
 
-    this._setInAppDisplayEnabled = this._setInAppDisplayEnabled.bind(this);
-    this._checkInAppDisplayEnabled();
+    this._setInAppLocked = this._setInAppLocked.bind(this);
+    this._checkInAppLocked();
   }
 
-  async _checkInAppDisplayEnabled() {
-    console.log("_checkInAppDisplayEnabled");
+  async _checkInAppLocked() {
+    console.log("_checkInAppLocked");
     try {
-      this.isInAppEnabled = await Acc.inapp.isInAppDisplayEnabled();
-      console.log("_checkInAppDisplayEnabled OK:" + this.isInAppEnabled);
-      this._updateButtonIsInAppEnabledName();
+      this.isInAppLocked = await Acc.inapp.isLocked();
+      console.log("_checkInAppLocked OK:" + this.isInAppLocked);
+      this._updateButtonIsInAppLockedName();
     } catch (e) {
       console.error(e);
     }
   }
 
-  _setInAppDisplayEnabled() {
-    if (this.isInAppEnabled) {
-      Acc.inapp.setInAppDisplayEnabled(false);
-      this.isInAppEnabled = false;
+  _setInAppLocked() {
+    if (this.isInAppLocked) {
+      Acc.inapp.setLocked(false);
+      this.isInAppLocked = false;
     } else {
-      Acc.inapp.setInAppDisplayEnabled(true);
-      this.isInAppEnabled = true;
+      Acc.inapp.setLocked(true);
+      this.isInAppLocked = true;
     }
-    this._updateButtonIsInAppEnabledName();
+    this._updateButtonIsInAppLockedName();
   }
 
-  _updateButtonIsInAppEnabledName() {
-    if (this.isInAppEnabled) {
-      this.setState({buttonIsInAppEnabledName : 'Enable InApps'});
+  _updateButtonIsInAppLockedName() {
+    if (this.isInAppLocked) {
+      this.setState({buttonIsInAppLockedName : 'Unlock InApps'});
     } else {
-      this.setState({buttonIsInAppEnabledName : 'Disable InApps'});
+      this.setState({buttonIsInAppLockedName : 'Lock InApps'});
     }
   }
 
@@ -104,10 +104,10 @@ export default class InAppScreen extends Component {
           Set Closed Callback
         </Button>
         <Button
-          onPress={this._setInAppDisplayEnabled}
+          onPress={this._setInAppLocked}
           containerStyle={styles.accbuttoncontainer}
           style={styles.accbutton}>
-          {this.state.buttonIsInAppEnabledName}
+          {this.state.buttonIsInAppLockedName}
         </Button>
       </View>
     );
