@@ -23,6 +23,10 @@ export default class ControlScreen extends Component {
       textGeofenceServiceEnabledName : '',
       buttonBeaconServiceEnabledName : '',
       textBeaconServiceEnabledName : '',
+      textOptinDataEnabledName : '',
+      buttonOptinDataEnabledName : '',
+      textOptinGeolocEnabledName : '',
+      buttonOptinGeolocEnabledName : '',
     };
     Acc.control.areAllServicesEnabled().then(enabled => {
       this.allServicesEnabled = enabled;
@@ -40,10 +44,20 @@ export default class ControlScreen extends Component {
       this.beaconServiceEnabled = enabled;
       this._updateBeaconServiceEnabledNames();
     });
+    Acc.control.isOptinDataEnabled().then(enabled => {
+      this.optinDataEnabled = enabled;
+      this._updateOptinDataEnabledNames();
+    });
+    Acc.control.isOptinGeolocEnabled().then(enabled => {
+      this.optinGeoloc = enabled;
+      this._updateOptinGeolocEnabledNames();
+    });
     this._setAllServicesEnabled = this._setAllServicesEnabled.bind(this);
     this._setNetworkCallsEnabled = this._setNetworkCallsEnabled.bind(this);
     this._setGeofenceServiceEnabled = this._setGeofenceServiceEnabled.bind(this);
     this._setBeaconServiceEnabled = this._setBeaconServiceEnabled.bind(this);
+    this._setOptinDataEnabled = this._setOptinDataEnabled.bind(this);
+    this._setOptinGeolocEnabled = this._setOptinGeolocEnabled.bind(this);
   }
 
   _updateAllServicesEnabledNames() {
@@ -76,13 +90,33 @@ export default class ControlScreen extends Component {
     }
   }
 
-  _updateBeaconServiceEnabledNames() {
+    _updateBeaconServiceEnabledNames() {
     if (this.beaconServiceEnabled) {
       this.setState({textBeaconServiceEnabledName : 'Beacon service is enabled'});
       this.setState({buttonBeaconServiceEnabledName : 'Disable'});
     } else {
       this.setState({textBeaconServiceEnabledName : 'Beacon service is disabled'});
       this.setState({buttonBeaconServiceEnabledName : 'Enable'});
+    }
+  }
+
+    _updateOptinDataEnabledNames() {
+    if (this.optinDataEnabled) {
+      this.setState({textOptinDataEnabledName : 'Optin data is enabled'});
+      this.setState({buttonOptinDataEnabledName : 'Disable'});
+    } else {
+      this.setState({textOptinDataEnabledName : 'Optin data is disabled'});
+      this.setState({buttonOptinDataEnabledName : 'Enable'});
+    }
+  }
+
+    _updateOptinGeolocEnabledNames() {
+    if (this.optinGeolocEnabled) {
+      this.setState({textOptinGeolocEnabledName : 'Optin geoloc is enabled'});
+      this.setState({buttonOptinGeolocEnabledName : 'Disable'});
+    } else {
+      this.setState({textOptinGeolocEnabledName : 'Optin geoloc is disabled'});
+      this.setState({buttonOptinGeolocEnabledName : 'Enable'});
     }
   }
 
@@ -108,6 +142,19 @@ export default class ControlScreen extends Component {
     this.beaconServiceEnabled = !this.beaconServiceEnabled;
     Acc.control.setBeaconServiceEnabled(this.beaconServiceEnabled);
     this._updateBeaconServiceEnabledNames();
+  }
+
+  _setOptinDataEnabled() {
+    this.optinDataEnabled = !this.optinDataEnabled;
+    Acc.control.setOptinDataEnabled(this.optinDataEnabled);
+    this._updateOptinDataEnabledNames();
+  }
+
+  _setOptinGeolocEnabled() {
+    this.optinGeolocEnabled = !this.optinGeolocEnabled;
+    Acc.control.setOptinGeolocEnabled(this.optinGeolocEnabled);
+    this._updateOptinGeolocEnabledNames();
+
   }
 
   render() {
@@ -141,13 +188,22 @@ export default class ControlScreen extends Component {
           {this.state.textGeofenceServiceEnabledName}
         </Text>
         <Button
-          onPress={this._setBeaconServiceEnabled}
+          onPress={this._setOptinDataEnabled}
           containerStyle={styles.accbuttoncontainer}
           style={styles.accbutton}>
-          {this.state.buttonBeaconServiceEnabledName}
+          {this.state.buttonOptinDataEnabledName}
         </Button>
         <Text style={styles.welcome}>
-          {this.state.textBeaconServiceEnabledName}
+          {this.state.textOptinDataEnabledName}
+        </Text>
+        <Button
+          onPress={this._setOptinGeolocEnabled}
+          containerStyle={styles.accbuttoncontainer}
+          style={styles.accbutton}>
+          {this.state.buttonOptinGeolocEnabledName}
+        </Button>
+        <Text style={styles.welcome}>
+          {this.state.textOptinGeolocEnabledName}
         </Text>
       </View>
     );
