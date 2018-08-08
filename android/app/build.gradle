@@ -148,8 +148,8 @@ android {
 }
 
 dependencies {
-    compile project(':react-native-acc-geofences')
-    compile project(':react-native-acc-beacons')
+//    compile project(':react-native-acc-geofences')
+//    compile project(':react-native-acc-beacons')
     compile project(':react-native-acc')
     compile project(':react-native-acc-push-gcm')
     compile fileTree(dir: "libs", include: ["*.jar"])
