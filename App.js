@@ -5,7 +5,7 @@
  */
 
 import React, { Component } from 'react';
-import { PermissionsAndroid, Platform } from 'react-native';
+import { PermissionsAndroid, Platform, Linking } from 'react-native';
 import {
   Text,
   View,
@@ -34,6 +34,41 @@ class HomeScreen extends Component {
   static navigationOptions = {
     title: 'Accengage Demo',
   };
+
+  componentDidMount() {
+    //We get the deeplink URL
+    console.log("Component did Mount !");
+      if (Platform.OS === 'android') {
+        Linking.getInitialURL().then(url => {
+          console.log("url :" + url);
+          this.navigate(url);
+        });
+        //iOS deeplinking (not tested)
+      } else {
+        Linking.addEventListener('url', this.handleOpenURL);
+      }
+    }
+
+    componentWillUnmount() {
+    Linking.removeEventListener('url', this.handleOpenURL);
+  }
+
+  handleOpenURL = (event) => {
+    this.navigate(event.url);
+  }
+
+    //Decomposing the deeplink and then navigate
+   navigate = (url) => {
+    const { navigate } = this.props.navigation;
+    console.log("url : " + url);
+    //Getting url rna4s://control
+    const route = url.replace(/.*?:\/\//g, '');
+    console.log("route : " + route);
+    //If route is control, then go to Control page
+    if (route === 'control') {
+      navigate('Control')
+    };
+  }
 
   constructor() {
     super();

@@ -5,13 +5,13 @@ import android.content.res.Configuration;
 
 import com.facebook.react.ReactApplication;
 //import com.accengage.react.geofences.RNAccGeofencesPackage;
+//import com.accengage.react.beacons.RNAccBeaconsPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 import com.ad4screen.sdk.A4S;
 import com.accengage.react.push.RNAccPushGcmPackage;
-//import com.accengage.react.beacons.RNAccBeaconsPackage;
 import com.accengage.react.RNAccPackage;
 import com.accengage.react.analytics.RNAccDeviceInfoPackage;
 import com.accengage.react.analytics.RNAccStaticListsPackage;
