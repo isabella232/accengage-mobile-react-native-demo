@@ -188,6 +188,15 @@ export default class ControlScreen extends Component {
           {this.state.textGeofenceServiceEnabledName}
         </Text>
         <Button
+          onPress={this._setBeaconServiceEnabled}
+          containerStyle={styles.accbuttoncontainer}
+          style={styles.accbutton}>
+          {this.state.buttonBeaconServiceEnabledName}
+        </Button>
+        <Text style={styles.welcome}>
+          {this.state.textBeaconServiceEnabledName}
+        </Text>
+        <Button
           onPress={this._setOptinDataEnabled}
           containerStyle={styles.accbuttoncontainer}
           style={styles.accbutton}>
