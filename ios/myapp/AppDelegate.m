@@ -18,7 +18,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  [Accengage start];
+  [Accengage startWithOptIn:ACCOptInEnabled];
   [Accengage setLoggingEnabled:YES];
   
   NSURL *jsCodeLocation;
