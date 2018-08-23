@@ -18,9 +18,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  [Accengage startWithOptIn:ACCOptInEnabled];
-  [Accengage setLoggingEnabled:YES];
-  
+  ACCConfiguration *config = [ACCConfiguration defaultConfig];
+  config.launchOptions = launchOptions;
+  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(),^{
+    [Accengage startWithConfig:config optIn:ACCOptInEnabled];
+    [Accengage setLoggingEnabled:YES];
+  });
+    
   NSURL *jsCodeLocation;
 
   jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
