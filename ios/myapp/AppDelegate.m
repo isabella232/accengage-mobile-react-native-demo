@@ -18,9 +18,23 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  [Accengage start];
-  [Accengage setLoggingEnabled:YES];
+  ACCConfiguration *config = [ACCConfiguration defaultConfig];
+  config.launchOptions = launchOptions;
   
+  BOOL dataOptin = [[[NSUserDefaults standardUserDefaults] valueForKey:@"dataOptinApp"] boolValue];
+  BOOL geolocOptin = [[[NSUserDefaults standardUserDefaults] valueForKey:@"geolocOptinApp"] boolValue];
+  
+  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(),^{
+    [Accengage startWithConfig:config optIn:ACCOptInEnabled];
+    if (dataOptin) {
+      [Accengage setDataOptInEnabled:dataOptin];
+    }
+    if (geolocOptin) {
+      [Accengage setGeolocOptInEnabled:geolocOptin];
+    }
+    [Accengage setLoggingEnabled:YES];
+  });
+    
   NSURL *jsCodeLocation;
 
   jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
@@ -37,6 +51,12 @@
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
   return YES;
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+            options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+  return [RCTLinkingManager application:application openURL:url options:options];
 }
 
 @end

@@ -49,7 +49,7 @@ export default class ControlScreen extends Component {
       this._updateOptinDataEnabledNames();
     });
     Acc.control.isOptinGeolocEnabled().then(enabled => {
-      this.optinGeoloc = enabled;
+      this.optinGeolocEnabled = enabled;
       this._updateOptinGeolocEnabledNames();
     });
     this._setAllServicesEnabled = this._setAllServicesEnabled.bind(this);
