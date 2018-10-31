@@ -39,6 +39,7 @@
 		2DCD954D1E0B4F2C00145EB5 /* myappTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* myappTests.m */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		83583DB621830C990098D6C2 /* AccengageConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 83583DB521830C990098D6C2 /* AccengageConfig.plist */; };
 		A25430391FDAC627008E61CD /* AccengageConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = A25430381FDAC627008E61CD /* AccengageConfig.plist */; };
 		A2CC37321FD6F6A5004E7AC2 /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = A2CC37311FD6F6A5004E7AC2 /* NotificationService.m */; };
 		A2CC37361FD6F6A5004E7AC2 /* AccengageNotificationService.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A2CC372E1FD6F6A5004E7AC2 /* AccengageNotificationService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -420,6 +421,7 @@
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		7F8D611F9A6A49DFBC492506 /* RNAcc.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNAcc.xcodeproj; path = "../node_modules/react-native-acc/ios/RNAcc.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		83583DB521830C990098D6C2 /* AccengageConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AccengageConfig.plist; sourceTree = "<group>"; };
 		A25430381FDAC627008E61CD /* AccengageConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AccengageConfig.plist; sourceTree = "<group>"; };
 		A2CC36E91FD6E197004E7AC2 /* myapp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = myapp.entitlements; path = myapp/myapp.entitlements; sourceTree = "<group>"; };
 		A2CC372E1FD6F6A5004E7AC2 /* AccengageNotificationService.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AccengageNotificationService.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -703,6 +705,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				83583DB521830C990098D6C2 /* AccengageConfig.plist */,
 				13B07FAE1A68108700A75B9A /* myapp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* myappTests */,
@@ -1343,6 +1346,7 @@
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				A25430391FDAC627008E61CD /* AccengageConfig.plist in Resources */,
+				83583DB621830C990098D6C2 /* AccengageConfig.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -80,6 +80,26 @@ class HomeScreen extends Component {
     Acc.inapp.setLocked(false);
     Acc.push.setEnabled(true);
 
+    var array = [
+        {id:"1", title:"je participe", bool:true},
+        {id:"2", title:"fermer",bool:true}];
+
+    var dict = {"test_react":[
+        {id:"1", title:"je participe", bool:true},
+        {id:"2", title:"fermer",bool:true}]};
+
+
+    // var dict = {"test_react":[
+    //     {id:"1", title:"je participe", bool:true},
+    //     {id:"2", title:"fermer",bool:true}]};
+    //
+    //
+    // var dict = [{key:"test_react", value:[
+    //     {id:"1", title:"je participe", bool:true},
+    //     {id:"2", title:"fermer",bool:true}]}];
+
+    Acc.push.setCustomCategories(dict);
+
     if (Platform.OS === 'android') {
       requestLocationPermission().then();
     }

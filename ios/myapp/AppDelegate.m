@@ -19,13 +19,15 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   ACCConfiguration *config = [ACCConfiguration defaultConfig];
+  config.appId = @"comptedemosdka04ca212eb81160";
+  config.appPrivateKey = @"cb7aef9229bc078272f29bc5adee849725159f9e";
   config.launchOptions = launchOptions;
   
   BOOL dataOptin = [[[NSUserDefaults standardUserDefaults] valueForKey:@"dataOptinApp"] boolValue];
   BOOL geolocOptin = [[[NSUserDefaults standardUserDefaults] valueForKey:@"geolocOptinApp"] boolValue];
   
   dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(),^{
-    [Accengage startWithConfig:config optIn:ACCOptInEnabled];
+    [Accengage start];
     if (dataOptin) {
       [Accengage setDataOptInEnabled:dataOptin];
     }
