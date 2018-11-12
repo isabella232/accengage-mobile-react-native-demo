@@ -9,14 +9,14 @@ import { PermissionsAndroid, Platform, Linking } from 'react-native';
 import {
   Text,
   View,
-  DeviceEventEmitter
+  DeviceEventEmitter,
+  YellowBox
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import Button from 'react-native-button';
 import Acc from 'react-native-acc';
-
+import FCMPlugin from 'react-native-acc-fcm'
 import styles from './Styles';
-
 import PushScreen from "./app/components/PushScreen";
 import AnalyticsScreen from "./app/components/AnalyticsScreen";
 import TrackingScreen from './app/components/analytics/TrackingScreen'
@@ -29,6 +29,18 @@ import View2Screen from "./app/components/analytics/View2Screen";
 import PushEventsScreen from "./app/components/push/PushEventsScreen.js";
 import InAppEventsScreen from "./app/components/inapp/InAppEventsScreen.js";
 import ControlScreen from "./app/components/ControlScreen";
+import 'core-js/es6/symbol'; 
+import 'core-js/fn/symbol/iterator';
+// symbol polyfills
+global.Symbol = require('core-js/es6/symbol');
+require('core-js/fn/symbol/iterator');
+
+// collection fn polyfills
+require('core-js/fn/map');
+require('core-js/fn/set');
+require('core-js/fn/array/find');
+
+import * as firebase from 'firebase';
 
 class HomeScreen extends Component {
   static navigationOptions = {
@@ -73,6 +85,22 @@ class HomeScreen extends Component {
   constructor() {
     super();
 
+if (Platform.OS === 'android') {
+  if (typeof Symbol === 'undefined') {
+    if (Array.prototype['@@iterator'] === undefined) {
+      Array.prototype['@@iterator'] = function() {
+        let i = 0;
+        return {
+          next: () => ({
+            done: i >= this.length,
+            value: this[i++],
+          }),
+        };
+      };
+    }
+  }
+}
+
     DeviceEventEmitter.addListener('com.ad4screen.sdk.intent.category.PUSH_NOTIFICATIONS', function(event) {
       console.log("ActionsReceiver " + JSON.stringify(event));
     });
@@ -83,6 +111,7 @@ class HomeScreen extends Component {
     if (Platform.OS === 'android') {
       requestLocationPermission().then();
     }
+    
   }
 
   render() {

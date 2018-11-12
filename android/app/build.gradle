@@ -148,10 +148,10 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-acc')
+    compile project(':react-native-acc-fcm')
 //    compile project(':react-native-acc-geofences')
 //    compile project(':react-native-acc-beacons')
-    compile project(':react-native-acc')
-    compile project(':react-native-acc-push-gcm')
     compile fileTree(dir: "libs", include: ["*.jar"])
     compile "com.android.support:appcompat-v7:27.0.1"
     compile "com.facebook.react:react-native:+"  // From node_modules
@@ -163,3 +163,4 @@ task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
 }
+apply plugin: 'com.google.gms.google-services'

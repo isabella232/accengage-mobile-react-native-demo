@@ -1,11 +1,11 @@
 rootProject.name = 'myapp'
+include ':react-native-acc-fcm'
+project(':react-native-acc-fcm').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-acc-fcm/android')
 //include ':react-native-acc-geofences'
 //project(':react-native-acc-geofences').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-acc-geofences/android/app')
 //include ':react-native-acc-beacons'
 //project(':react-native-acc-beacons').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-acc-beacons/android/app')
 include ':react-native-acc'
 project(':react-native-acc').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-acc/android')
-include ':react-native-acc-push-gcm'
-project(':react-native-acc-push-gcm').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-acc-push-gcm/android')
 
 include ':app'
