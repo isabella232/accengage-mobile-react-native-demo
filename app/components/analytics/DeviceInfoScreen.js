@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {
+    Picker,
     StyleSheet,
     Text,
     TextInput,
@@ -8,6 +9,7 @@ import {
 import Button from 'react-native-button';
 import Acc from 'react-native-acc';
 import styles from './../../../Styles';
+import {DeviceInfo} from 'react-native-acc';
 
 export default class DeviceInfoScreen extends Component {
   static navigationOptions = ({navigation}) => ({
@@ -17,14 +19,26 @@ export default class DeviceInfoScreen extends Component {
   constructor(props) {
         super(props);
         this.state = {
+            method: "set",
             key: null,
             value: null
         };
   }
   render() {
     const { navigate } = this.props.navigation;
-        return (
+        return (  
           <View style={styles.container}>
+            <View style={styles.flowRight}>
+            <Picker
+  selectedValue={this.state.method}
+  style={{ height: 50, width: 200 }}
+  onValueChange={(itemValue, itemIndex) => this.setState({method: itemValue})}>
+  <Picker.Item label="Set" value="set" />
+  <Picker.Item label="Delete" value="delete" />
+  <Picker.Item label="Increment" value="increment" />
+  <Picker.Item label="Decrement" value="decrement" />
+</Picker>
+</View>
             <View style={styles.flowRight}>
                     <Text style={styles.text}>
                         Key
@@ -63,9 +77,7 @@ export default class DeviceInfoScreen extends Component {
     };
 
     _sendAction = () => {
-      console.log("Action sended");
-      var deviceInfo = {};
-      deviceInfo[this.state.key] = this.state.value;
-      Acc.analytics.deviceInfo.updateDeviceInfo(deviceInfo);
+      console.log("Method : " + this.state.method + ", action sent");
+      Acc.analytics.deviceInfo.updateDeviceInformation(this.state.method, this.state.key, this.state.value);
     }
 }
