@@ -78,12 +78,12 @@ class HomeScreen extends Component {
     });
 
     var customCategories = {"test_react":[
-    {id:"1", title:"je participe", bool:true},
-    {id:"2", title:"fermer",bool:true}]};
+    {id:"1", title:"je participe", foreground:true},
+    {id:"2", title:"fermer",foreground:true}]};
 
     Acc.inapp.setLocked(false);
-    Acc.push.setEnabled(true);
     Acc.push.setCustomCategories(customCategories);
+    Acc.push.setEnabled(true);
 
     if (Platform.OS === 'android') {
       requestLocationPermission().then();
