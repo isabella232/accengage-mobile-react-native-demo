@@ -77,7 +77,12 @@ class HomeScreen extends Component {
       console.log("ActionsReceiver " + JSON.stringify(event));
     });
 
+    var customCategories = {"test_react":[
+    {id:"1", title:"je participe", foreground:true},
+    {id:"2", title:"fermer",foreground:true}]};
+
     Acc.inapp.setLocked(false);
+    Acc.push.setCustomCategories(customCategories);
     Acc.push.setEnabled(true);
 
     if (Platform.OS === 'android') {
