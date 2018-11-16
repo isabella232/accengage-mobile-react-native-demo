@@ -23,6 +23,7 @@ import TrackingScreen from './app/components/analytics/TrackingScreen'
 import StaticListsScreen from "./app/components/analytics/StaticListsScreen";
 import DeviceInfoScreen from "./app/components/analytics/DeviceInfoScreen";
 import DeviceTagScreen from "./app/components/analytics/DeviceTagScreen";
+import StatesScreen from "./app/components/analytics/StatesScreen";
 import InAppScreen from "./app/components/InAppScreen";
 import ListStaticListsScreen from "./app/components/analytics/ListStaticListsScreen";
 import View1Screen from "./app/components/analytics/View1Screen";
@@ -128,6 +129,7 @@ const AccDemoApp = StackNavigator({
   ListStaticListsScreen: {screen: ListStaticListsScreen},
   DeviceInfo: {screen: DeviceInfoScreen},
   DeviceTag: {screen: DeviceTagScreen},
+  States: {screen: StatesScreen},
   View1: {screen: View1Screen},
   View2: {screen: View2Screen},
   PushEvents: {screen: PushEventsScreen},
