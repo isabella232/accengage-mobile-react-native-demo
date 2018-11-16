@@ -54,7 +54,7 @@ export default class StatesScreen extends Component {
             </View>
              
         
-            <Button containerStyle={styles.blueButton}
+            <Button containerStyle={styles.accbuttoncontainer}
                 	style={styles.accbutton}
                 	onPress={this._sendSetStatesAction}>
                 			Set
