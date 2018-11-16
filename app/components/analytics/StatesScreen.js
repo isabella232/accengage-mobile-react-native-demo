@@ -33,7 +33,7 @@ export default class StatesScreen extends Component {
           
           	<View style={styles.flowRight}>
                     <Text style={styles.text}>
-                        Categorie
+                        Name
                     </Text>
                     <TextInput
                         style={styles.input}
@@ -44,7 +44,7 @@ export default class StatesScreen extends Component {
             
             <View style={styles.flowRight}>
                 	<Text style={styles.text}>
-                    	Identifier
+                    	Value
                 	</Text>
                 	<TextInput
                     	style={styles.input}
