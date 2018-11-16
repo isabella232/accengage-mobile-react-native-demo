@@ -21,6 +21,22 @@ export default StyleSheet.create({
     borderRadius: 4,
     backgroundColor: '#0000ff',
   },
+  blueButton: {
+    margin: 5,
+    padding: 10,
+    height: 45,
+    overflow: 'hidden',
+    borderRadius: 4,
+    backgroundColor: '#0000ff',
+   },
+   redButton: {
+    margin: 5,
+    padding: 10,
+    height: 45,
+    overflow: 'hidden',
+    borderRadius: 4,
+    backgroundColor: '#ff0000',
+  },
   accbutton: {
     fontSize: 20,
     color: 'white',
