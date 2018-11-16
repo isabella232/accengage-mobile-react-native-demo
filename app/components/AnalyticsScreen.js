@@ -38,7 +38,7 @@ export default class AnalyticsScreen extends Component {
          <Button onPress={() => navigate('States')}
                 containerStyle={styles.accbuttoncontainer}
                 style={styles.accbutton}>
-          Device Tag
+          States
         </Button>
         <Button onPress={() => navigate('View1')}
                 containerStyle={styles.accbuttoncontainer}
