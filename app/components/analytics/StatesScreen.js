@@ -39,6 +39,8 @@ export default class StatesScreen extends Component {
                         style={styles.input}
                         value={this.state.name}
                         onChange={this._onNameChanged}
+                        ref={input => { this.textNameInput = input }}
+                        clearButtonMode="always"
                         placeholder='Name'/>
             </View>
             
@@ -50,6 +52,8 @@ export default class StatesScreen extends Component {
                     	style={styles.input}
                     	value={this.state.value}
                     	onChange={this._onValueChanged}
+                    	ref={input => { this.textValueInput = input }}
+                    	clearButtonMode="always"
                     	placeholder='Leave empty to delete state'/>
             </View>
              
@@ -75,6 +79,12 @@ export default class StatesScreen extends Component {
     
     _sendSetStatesAction = () => {
     	Acc.analytics.states.setState(this.state.name,  this.state.value);
+    	this._initializeAll();
+    }
+    
+    _initializeAll = () => {
+    	this.textNameInput.clear();
+    	this.textValueInput.clear();
     }
     
 }

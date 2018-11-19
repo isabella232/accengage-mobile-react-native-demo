@@ -35,7 +35,7 @@ export default StyleSheet.create({
     height: 45,
     overflow: 'hidden',
     borderRadius: 4,
-    backgroundColor: '#ff0000',
+    backgroundColor: '#a70505',
   },
   accbutton: {
     fontSize: 20,
@@ -65,6 +65,26 @@ export default StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         alignSelf: 'stretch',
+    },
+    sector: {
+    	marginRight: 20,
+    	marginLeft: 20,
+    	marginBottom: 20,
+    	marginTop: 5,
+    	padding: 10,
+        alignItems: 'center',
+        alignSelf: 'stretch',
+        borderRadius: 8,
+        borderWidth: 1,
+        borderColor: 'black',
+    },
+     picker: {
+    	width: 200,
+    	height: 80,
+    },
+    pickerItem: {
+    	height: 44,
+    	color: 'black'
     },
     switch: {
         marginLeft: 20,

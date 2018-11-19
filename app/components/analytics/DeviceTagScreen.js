@@ -6,7 +6,9 @@ import {
     StyleSheet,
     Text,
     TextInput,
-    View
+    View,
+    ScrollView,
+    Picker
 } from 'react-native';
 import Button from 'react-native-button';
 import Acc from 'react-native-acc';
@@ -22,15 +24,24 @@ export default class DeviceTagScreen extends Component {
         super(props);
         this.state = {
         	categorie : null,
-        	identifier : null
+        	identifier : null,
+        	key : null,
+        	value : null,
+        	type : null,
+        	keyboardType:'default',
+        	dataDict : {}
         };
   }
   render() {
     const { navigate } = this.props.navigation;
         return (  
+     
         <View style={styles.container}>
-          	
-          
+        
+        	<ScrollView 
+  			scrollEnabled={true}
+  			contentContainerStyle={styles.main}>
+  			
           	<View style={styles.flowRight}>
                     <Text style={styles.text}>
                         Categorie
@@ -39,6 +50,8 @@ export default class DeviceTagScreen extends Component {
                         style={styles.input}
                         value={this.state.categorie}
                         onChange={this._onKeyCategorieChanged}
+                        ref={input => { this.textCategorieInput = input }}
+                        clearButtonMode="always"
                         placeholder='Categorie'/>
             </View>
             
@@ -50,8 +63,58 @@ export default class DeviceTagScreen extends Component {
                     	style={styles.input}
                     	value={this.state.identifier}
                     	onChange={this._onValueIdentifierChanged}
+                    	ref={input => { this.textIdentifierInput = input }}
+                    	clearButtonMode="always"
                     	placeholder='Identifier'/>
             </View>
+            
+         <View style={styles.sector}>
+         	<Text style={styles.text}>
+                    Add data
+            </Text>
+            
+            <View style={styles.flowRight}>
+                    <Text style={styles.text}>
+                        Key : 
+                    </Text>
+                    <TextInput
+                        style={styles.input}
+                        value={this.state.key}
+                        onChange={this._onKeyChanged}
+                        ref={input => { this.textKeyInput = input}}
+                        clearButtonMode="always"
+                        placeholder='Key'/>
+            </View>
+            
+                        
+            <View style={styles.flowRight}>
+            	<Picker style={styles.picker} itemStyle={styles.pickerItem}
+            		selectedValue={this.state.type}
+ 				    onValueChange={(itemValue) => this.setState({type: itemValue})}>
+ 		   		<Picker.Item label="Text" value="Text" />
+  		   		<Picker.Item label="Number" value="Number" />
+  		   		<Picker.Item label="Date" value="Date" />
+		   		</Picker>
+		   </View>
+		   
+		   <View style={styles.flowRight}>
+                    <Text style={styles.text}>
+                        Value  : 
+                    </Text>
+                    <TextInput
+                        style={styles.input}
+                        value={this.state.value}
+                        onChange={this._onValueChanged}
+                        ref={input => { this.textValueInput = input }}
+                        clearButtonMode="always"
+                        keyboardType={(this.state.type === "Number") ? 'numeric' : 'default'}
+                        placeholder='Value'/>
+            </View>
+                        
+            <Button onPress={this._sendAddDataAction}>
+                	Add data
+           	</Button>
+        </View>
              
         
         <View style={{flexDirection: 'row'}}>
@@ -66,13 +129,13 @@ export default class DeviceTagScreen extends Component {
                 	onPress={this._sendDelelteDeviceTagAction}>
                 			Delete device tag
             </Button> 
-       </View>
-       
-    </View>
-                 
+       </View> 
+	</ScrollView>   
+</View>
+  
         );
     }
-
+    
 	 _onKeyCategorieChanged = (event) => {
         this.setState({categorie: event.nativeEvent.text});
     };
@@ -81,21 +144,47 @@ export default class DeviceTagScreen extends Component {
         this.setState({identifier: event.nativeEvent.text});
     };
     
+    _onKeyChanged = (event) => {
+        this.setState({key: event.nativeEvent.text});
+    };
+    
+    _onValueChanged = (event) => {
+        this.setState({value: event.nativeEvent.text});
+    };
+    
     _sendSetDeviceTagAction = () => {
-    	var dict = {};
-		this._setDeviceTag(this.state.categorie, this.state.identifier, dict)
+		this._setDeviceTag(this.state.categorie, this.state.identifier)
     }
     
     _sendDelelteDeviceTagAction = () => {
     	this._deleteDeviceTag(this.state.categorie, this.state.identifier)
     }
     
+	_sendAddDataAction = () => {
 
-    _setDeviceTag(categorie, identifier, dict) {
-      Acc.analytics.deviceTag.setDeviceTag(categorie, identifier, dict);
+		//Adding Items To data dictionary.
+		this.state.dataDict[this.state.key]	= this.state.value;
+      	console.log(this.state.dataDict)
+      	
+      	//Clear key and value input texts
+      	this.textKeyInput.clear();
+    	this.textValueInput.clear();
+	}
+	
+    _setDeviceTag(categorie, identifier) {
+      Acc.analytics.deviceTag.setDeviceTag(categorie, identifier, this.state.dataDict);
+      this._initializeAll();
     }
     
-    _deleteDeviceTag(categorie, identifier, dict) {
+    _deleteDeviceTag(categorie, identifier) {
       Acc.analytics.deviceTag.deleteDeviceTag(categorie, identifier);
+      this._initializeAll();
+    }
+    
+    _initializeAll = () => {
+    	this.textCategorieInput.clear();
+    	this.textIdentifierInput.clear();
+    	this.textKeyInput.clear();
+    	this.textValueInput.clear();
     }
 }
