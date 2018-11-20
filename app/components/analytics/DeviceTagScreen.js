@@ -23,7 +23,7 @@ export default class DeviceTagScreen extends Component {
   constructor(props) {
         super(props);
         this.state = {
-        	categorie : null,
+        	category : null,
         	identifier : null,
         	key : null,
         	value : null,
@@ -44,15 +44,15 @@ export default class DeviceTagScreen extends Component {
   			
           	<View style={styles.flowRight}>
                     <Text style={styles.text}>
-                        Categorie
+                        Category
                     </Text>
                     <TextInput
                         style={styles.input}
-                        value={this.state.categorie}
-                        onChange={this._onKeyCategorieChanged}
-                        ref={input => { this.textCategorieInput = input }}
+                        value={this.state.category}
+                        onChange={this._onKeyCategoryChanged}
+                        ref={input => { this.textCategoryInput = input }}
                         clearButtonMode="always"
-                        placeholder='Categorie'/>
+                        placeholder='Category'/>
             </View>
             
             <View style={styles.flowRight}>
@@ -126,7 +126,7 @@ export default class DeviceTagScreen extends Component {
             
             <Button containerStyle={styles.redButton}
                 	style={styles.accbutton}
-                	onPress={this._sendDelelteDeviceTagAction}>
+                	onPress={this._sendDeleteDeviceTagAction}>
                 			Delete device tag
             </Button> 
        </View> 
@@ -136,8 +136,8 @@ export default class DeviceTagScreen extends Component {
         );
     }
     
-	 _onKeyCategorieChanged = (event) => {
-        this.setState({categorie: event.nativeEvent.text});
+	 _onKeyCategoryChanged = (event) => {
+        this.setState({category: event.nativeEvent.text});
     };
 
     _onValueIdentifierChanged = (event) => {
@@ -153,16 +153,17 @@ export default class DeviceTagScreen extends Component {
     };
     
     _sendSetDeviceTagAction = () => {
-		this._setDeviceTag(this.state.categorie, this.state.identifier)
+		this._setDeviceTag(this.state.category, this.state.identifier)
     }
     
-    _sendDelelteDeviceTagAction = () => {
-    	this._deleteDeviceTag(this.state.categorie, this.state.identifier)
+    _sendDeleteDeviceTagAction = () => {
+    	this._deleteDeviceTag(this.state.category, this.state.identifier)
     }
     
 	_sendAddDataAction = () => {
 
 		//Adding Items To data dictionary.
+        console.log("Key : " + this.state.key + " Value : " + this.state.value);
 		this.state.dataDict[this.state.key]	= this.state.value;
       	console.log(this.state.dataDict)
       	
@@ -171,20 +172,22 @@ export default class DeviceTagScreen extends Component {
     	this.textValueInput.clear();
 	}
 	
-    _setDeviceTag(categorie, identifier) {
-      Acc.analytics.deviceTag.setDeviceTag(categorie, identifier, this.state.dataDict);
+    _setDeviceTag(category, identifier) {
+      console.log(category, identifier);
+      Acc.analytics.deviceTag.setDeviceTag(category, identifier, this.state.dataDict);
       this._initializeAll();
     }
     
-    _deleteDeviceTag(categorie, identifier) {
-      Acc.analytics.deviceTag.deleteDeviceTag(categorie, identifier);
+    _deleteDeviceTag(category, identifier) {
+      Acc.analytics.deviceTag.deleteDeviceTag(category, identifier);
       this._initializeAll();
     }
     
     _initializeAll = () => {
-    	this.textCategorieInput.clear();
+    	this.textCategoryInput.clear();
     	this.textIdentifierInput.clear();
     	this.textKeyInput.clear();
     	this.textValueInput.clear();
+        this.state.dataDict = {};
     }
 }
