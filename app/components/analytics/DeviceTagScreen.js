@@ -157,10 +157,12 @@ export default class DeviceTagScreen extends Component {
         );
     }
     
-    }
-    	this.setState({value:moment(date).format("MM-DD-YYYY")});
-    	this.setState({date:moment(date).format("yyyy'-'MM'-'dd'T'HH':'mm':'ss.SSSZZZ")});
+    
+    	
     _dateChangedHandler = (event) => {
+        this.setState({value:moment(date).format("MM-DD-YYYY")});
+        this.setState({date:moment(date).format("yyyy'-'MM'-'dd'T'HH':'mm':'ss.SSSZZZ")});
+    };
 	 _onKeyCategoryChanged = (event) => {
         this.setState({category: event.nativeEvent.text});
     };
@@ -190,7 +192,7 @@ export default class DeviceTagScreen extends Component {
 		//Adding Items To data dictionary.
         console.log("Key : " + this.state.key + " Value : " + this.state.value);
 		this.state.dataDict[this.state.key]	= this.state.value;
-      	console.log(this.state.dataDict)
+      	console.log(this.state.dataDict);
       	
       	//Clear key and value input texts
       	this.textKeyInput.clear();
@@ -215,4 +217,5 @@ export default class DeviceTagScreen extends Component {
     	this.textValueInput.clear();
         this.state.dataDict = {};
     }
+
 }
