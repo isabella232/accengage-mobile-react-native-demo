@@ -9,20 +9,12 @@ import Acc from 'react-native-acc';
 import styles from './../../../Styles';
 
 function trackEvent() {
-  var papa = {
-    name: "Andrei",
-    age: 33
-  };
-  var maman = {
-    name: "Muriel",
-    age: 33
-  };
   var nikita = {
     name: "Nikita",
     age: 1,
-    parents : [papa, maman]
+    birthDate : new Date('December 17, 1995 03:24:00') 
   };
-  Acc.analytics.tracking.trackEvent(5001, nikita);
+  Acc.analytics.tracking.trackCustomEvent(5001, nikita);
 }
 
 function trackLead() {
