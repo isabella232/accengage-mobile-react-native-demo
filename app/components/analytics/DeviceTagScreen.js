@@ -1,6 +1,8 @@
 'use strict';
 
 import React, {Component} from 'react';
+import DatePicker from 'react-native-datepicker';
+import moment from "moment";
 import {
 	Switch,
     StyleSheet,
@@ -8,6 +10,7 @@ import {
     TextInput,
     View,
     ScrollView,
+    date,
     Picker
 } from 'react-native';
 import Button from 'react-native-button';
@@ -29,6 +32,7 @@ export default class DeviceTagScreen extends Component {
         	value : null,
         	type : null,
         	keyboardType:'default',
+        	date : null,
         	dataDict : {}
         };
   }
@@ -109,6 +113,23 @@ export default class DeviceTagScreen extends Component {
                         clearButtonMode="always"
                         keyboardType={(this.state.type === "Number") ? 'numeric' : 'default'}
                         placeholder='Value'/>
+                      
+                <View hide={true}>
+                	{(this.state.type === "Date") ? 
+                	<DatePicker
+  						style={{ width: 30 }}
+  						hide={true}
+  						date={this.state.date}
+  						mode="date"
+  						placeholder="select date"
+  						format="YYYY-MM-DD"
+  						minDate="2016-05-01"
+  						confirmBtnText="Confirm"
+  						cancelBtnText="Cancel"
+  						onDateChange={date => this._dateChangedHandler(date)}
+					/>
+                	: null} 
+				</View>
             </View>
                         
             <Button onPress={this._sendAddDataAction}>
@@ -136,6 +157,10 @@ export default class DeviceTagScreen extends Component {
         );
     }
     
+    }
+    	this.setState({value:moment(date).format("MM-DD-YYYY")});
+    	this.setState({date:moment(date).format("yyyy'-'MM'-'dd'T'HH':'mm':'ss.SSSZZZ")});
+    _dateChangedHandler = (event) => {
 	 _onKeyCategoryChanged = (event) => {
         this.setState({category: event.nativeEvent.text});
     };
