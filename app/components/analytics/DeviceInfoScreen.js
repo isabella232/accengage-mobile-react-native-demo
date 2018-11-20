@@ -4,6 +4,7 @@ import {
     StyleSheet,
     Text,
     TextInput,
+    ScrollView,
     View
 } from 'react-native';
 import Button from 'react-native-button';
@@ -21,13 +22,18 @@ export default class DeviceInfoScreen extends Component {
         this.state = {
             method: "set",
             key: null,
-            value: null
+            value: null,
+            keyboardType : 'default'
         };
   }
   render() {
     const { navigate } = this.props.navigation;
         return (  
           <View style={styles.container}>
+          
+          	<ScrollView 
+  			scrollEnabled={true}>
+  			
             <View style={styles.flowRight}>
                 <Text style={styles.text}>
                         Method
@@ -61,6 +67,7 @@ export default class DeviceInfoScreen extends Component {
                 <TextInput
                     style={styles.input}
                     value={this.state.value}
+                    keyboardType={((this.state.method === 'increment') || (this.state.method === 'decrement')) ? 'numeric' : 'default'}
                     onChange={this._onValueTextChanged}
                     ref={input => { this.textValueInput = input }}
                     clearButtonMode="always"
@@ -71,6 +78,7 @@ export default class DeviceInfoScreen extends Component {
                 onPress={this._sendAction}>
                 Send
             </Button>
+            </ScrollView> 
           </View>
         );
     }
