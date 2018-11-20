@@ -29,25 +29,30 @@ export default class DeviceInfoScreen extends Component {
         return (  
           <View style={styles.container}>
             <View style={styles.flowRight}>
-            <Picker
-  selectedValue={this.state.method}
-  style={{ height: 50, width: 200 }}
-  onValueChange={(itemValue, itemIndex) => this.setState({method: itemValue})}>
-  <Picker.Item label="Set" value="set" />
-  <Picker.Item label="Delete" value="delete" />
-  <Picker.Item label="Increment" value="increment" />
-  <Picker.Item label="Decrement" value="decrement" />
-</Picker>
-</View>
+                <Text style={styles.text}>
+                        Method
+                </Text>
+            	<Picker style={styles.picker} itemStyle={styles.pickerItem}
+            		selectedValue={this.state.method}
+ 				    onValueChange={(itemValue) => this.setState({method: itemValue})}>
+ 		   		<Picker.Item label="Set" value="set" />
+  		   		<Picker.Item label="Delete" value="delete" />
+  		   		<Picker.Item label="Increment" value="increment" />
+ 		   		<Picker.Item label="Decrement" value="decrement" />
+		   		</Picker>
+		   </View>
+		   
             <View style={styles.flowRight}>
-                    <Text style={styles.text}>
-                        Key
-                    </Text>
-                    <TextInput
-                        style={styles.input}
-                        value={this.state.key}
-                        onChange={this._onKeyTextChanged}
-                        placeholder='Field Name'/>
+                <Text style={styles.text}>
+                    Key
+                </Text>
+                <TextInput
+                    style={styles.input}
+                    value={this.state.key}
+                    onChange={this._onKeyTextChanged}
+                    ref={input => { this.textKeyInput = input }}
+                    clearButtonMode="always"
+                    placeholder='Field Name'/>
             </View>
             <View style={styles.flowRight}>
                 <Text style={styles.text}>
@@ -57,6 +62,8 @@ export default class DeviceInfoScreen extends Component {
                     style={styles.input}
                     value={this.state.value}
                     onChange={this._onValueTextChanged}
+                    ref={input => { this.textValueInput = input }}
+                    clearButtonMode="always"
                     placeholder='Field Value'/>
             </View>
             <Button containerStyle={styles.accbuttoncontainer}
@@ -79,5 +86,11 @@ export default class DeviceInfoScreen extends Component {
     _sendAction = () => {
       console.log("Method : " + this.state.method + ", action sent");
       Acc.analytics.deviceInfo.updateDeviceInformation(this.state.method, this.state.key, this.state.value);
+      this._initializeAll();
+    }
+    
+    _initializeAll = () => {
+    	this.textKeyInput.clear();
+    	this.textValueInput.clear();
     }
 }
