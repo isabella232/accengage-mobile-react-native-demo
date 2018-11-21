@@ -31,7 +31,6 @@ export default class DeviceTagScreen extends Component {
         	key : null,
         	value : null,
         	type : null,
-        	keyboardType:'default',
         	date : null,
         	dataDict : {}
         };
@@ -212,5 +211,8 @@ export default class DeviceTagScreen extends Component {
     	this.textIdentifierInput.clear();
     	this.textKeyInput.clear();
     	this.textValueInput.clear();
+    	this.setState({categorie:null});
+    	this.setState({identifier:null});
+    	this.setState({dataDict:{}});
     }
 }
