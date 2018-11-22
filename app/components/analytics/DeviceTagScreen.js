@@ -117,15 +117,27 @@ export default class DeviceTagScreen extends Component {
                 	{(this.state.type === "Date") ? 
                 	<DatePicker
   						style={{ width: 30 }}
-  						hide={true}
   						date={this.state.date}
   						mode="date"
   						placeholder="select date"
   						format="YYYY-MM-DD"
-  						minDate="2016-05-01"
   						confirmBtnText="Confirm"
   						cancelBtnText="Cancel"
-  						onDateChange={date => this._dateChangedHandler(date)}
+  						customStyles={{
+                            dateIcon: {
+                                position: 'absolute',
+                                left: 0,
+                                top: 0,
+                                marginLeft: 0
+                            },
+                            dateInput: {
+                                marginLeft: 30
+                            }
+                        }}
+                        onDateChange={(date) => {
+                            this.setState({date:moment(date)});
+                            this.setState({value:moment(date).format("YYYY-MM-DD")});
+                        }}
 					/>
                 	: null} 
 				</View>
@@ -156,11 +168,6 @@ export default class DeviceTagScreen extends Component {
         );
     }
     
-    _dateChangedHandler = (event) => {
-    	this.setState({date:moment(date).format("yyyy'-'MM'-'dd'T'HH':'mm':'ss.SSSZZZ")});
-    	this.setState({value:moment(date).format("MM-DD-YYYY")});
-    }
-    
 	 _onKeyCategorieChanged = (event) => {
         this.setState({categorie: event.nativeEvent.text});
     };
@@ -186,14 +193,19 @@ export default class DeviceTagScreen extends Component {
     }
     
 	_sendAddDataAction = () => {
-
 		//Adding Items To data dictionary.
-		this.state.dataDict[this.state.key]	= this.state.value;
+		if (this.state.type === "Date") {
+			this.state.dataDict[this.state.key]	= this.state.date;
+		} else if (this.state.type === "Number") {
+			this.state.dataDict[this.state.key]	= parseInt(this.state.value, 10);
+		} else {
+			this.state.dataDict[this.state.key]	= this.state.value;
+		}
+
       	console.log(this.state.dataDict)
       	
       	//Clear key and value input texts
-      	this.textKeyInput.clear();
-    	this.textValueInput.clear();
+		this._initializeDataSection();
 	}
 	
     _setDeviceTag(categorie, identifier) {
@@ -204,6 +216,14 @@ export default class DeviceTagScreen extends Component {
     _deleteDeviceTag(categorie, identifier) {
       Acc.analytics.deviceTag.deleteDeviceTag(categorie, identifier);
       this._initializeAll();
+    }
+    
+    _initializeDataSection = () => {
+    	this.textKeyInput.clear();
+    	this.textValueInput.clear();
+    	this.setState({date:null});
+    	this.setState({key:null});
+    	this.setState({value:null});
     }
     
     _initializeAll = () => {
