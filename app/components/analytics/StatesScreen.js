@@ -6,6 +6,7 @@ import {
     StyleSheet,
     Text,
     TextInput,
+    ScrollView,
     View
 } from 'react-native';
 import Button from 'react-native-button';
@@ -30,6 +31,8 @@ export default class StatesScreen extends Component {
         return (  
         <View style={styles.container}>
           	
+          	<ScrollView  contentContainerStyle={styles.scrollcontainer}
+  						 scrollEnabled={true}>
           
           	<View style={styles.flowRight}>
                     <Text style={styles.text}>
@@ -58,12 +61,14 @@ export default class StatesScreen extends Component {
             </View>
              
         
-            <Button containerStyle={styles.accbuttoncontainer}
-                	style={styles.accbutton}
+           	<Button
+            		style={styles.blueButton}
+                	styleDisabled={styles.disabledButton}
+                	disabled={((this.state.name === null) || (this.state.name === "")) ? true : false}
                 	onPress={this._sendSetStatesAction}>
-                			Set
+                			Set               
            	</Button>
-       
+       	</ScrollView>
     </View>
                  
         );

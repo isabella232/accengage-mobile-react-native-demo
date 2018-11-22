@@ -31,8 +31,8 @@ export default class DeviceInfoScreen extends Component {
         return (  
           <View style={styles.container}>
           
-          	<ScrollView 
-  			scrollEnabled={true}>
+          	<ScrollView contentContainerStyle={styles.scrollcontainer}
+  						scrollEnabled={true}>
   			
             <View style={styles.flowRight}>
                 <Text style={styles.text}>
@@ -73,8 +73,10 @@ export default class DeviceInfoScreen extends Component {
                     clearButtonMode="always"
                     placeholder='Field Value'/>
             </View>
-            <Button containerStyle={styles.accbuttoncontainer}
-                style={styles.accbutton}
+            <Button
+                style={styles.blueButton}
+                styleDisabled={styles.disabledButton}
+                disabled={((this.state.key === null) || (this.state.value === null) || (this.state.key === "") || (this.state.value === "")) ? true : false}
                 onPress={this._sendAction}>
                 Send
             </Button>

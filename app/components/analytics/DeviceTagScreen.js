@@ -41,9 +41,8 @@ export default class DeviceTagScreen extends Component {
      
         <View style={styles.container}>
         
-        	<ScrollView 
-  			scrollEnabled={true}
-  			contentContainerStyle={styles.main}>
+        	<ScrollView  contentContainerStyle={styles.scrollcontainer}
+  						 scrollEnabled={true}>
   			
           	<View style={styles.flowRight}>
                     <Text style={styles.text}>
@@ -143,21 +142,25 @@ export default class DeviceTagScreen extends Component {
 				</View>
             </View>
                         
-            <Button onPress={this._sendAddDataAction}>
+            <Button
+            		disabled={((this.state.key === null) || (this.state.value === null) || (this.state.key === "") || (this.state.value === "")) ? true : false}
+                	onPress={this._sendAddDataAction}>
                 	Add data
            	</Button>
         </View>
              
         
         <View style={{flexDirection: 'row'}}>
-            <Button containerStyle={styles.blueButton}
-                	style={styles.accbutton}
+            <Button style={styles.blueButton}
+                	styleDisabled={styles.disabledButton}
+                	disabled={((this.state.categorie === null) || (this.state.identifier === null) || (this.state.categorie === "") || (this.state.identifier === "")) ? true : false}
                 	onPress={this._sendSetDeviceTagAction}>
                 			Add device tag
            	</Button>
             
-            <Button containerStyle={styles.redButton}
-                	style={styles.accbutton}
+            <Button style={styles.redButton}
+            		styleDisabled={styles.disabledButton}
+                	disabled={((this.state.categorie === null) || (this.state.identifier === null) || (this.state.categorie === "") || (this.state.identifier === "")) ? true : false}
                 	onPress={this._sendDelelteDeviceTagAction}>
                 			Delete device tag
             </Button> 
@@ -169,7 +172,7 @@ export default class DeviceTagScreen extends Component {
     }
     
 	 _onKeyCategorieChanged = (event) => {
-        this.setState({categorie: event.nativeEvent.text});
+    	this.setState({categorie: event.nativeEvent.text});
     };
 
     _onValueIdentifierChanged = (event) => {
@@ -201,8 +204,6 @@ export default class DeviceTagScreen extends Component {
 		} else {
 			this.state.dataDict[this.state.key]	= this.state.value;
 		}
-
-      	console.log(this.state.dataDict)
       	
       	//Clear key and value input texts
 		this._initializeDataSection();
@@ -234,5 +235,7 @@ export default class DeviceTagScreen extends Component {
     	this.setState({categorie:null});
     	this.setState({identifier:null});
     	this.setState({dataDict:{}});
+    	this.setState({sendButtonDisabled:true});
+    	this.setState({deleteButtonDisabled:true});
     }
 }

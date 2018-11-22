@@ -7,6 +7,12 @@ export default StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
+  scrollcontainer: {
+    flex: 1,
+    backgroundColor: '#F5FCFF',
+    marginBottom: 20,
+    marginTop: 50,
+  },
   welcome: {
     fontSize: 20,
     textAlign: 'center',
@@ -28,6 +34,8 @@ export default StyleSheet.create({
     overflow: 'hidden',
     borderRadius: 4,
     backgroundColor: '#0000ff',
+    color: 'white',
+    fontSize: 20,
    },
    redButton: {
     margin: 5,
@@ -36,6 +44,18 @@ export default StyleSheet.create({
     overflow: 'hidden',
     borderRadius: 4,
     backgroundColor: '#a70505',
+    color: 'white',
+    fontSize: 20,
+  },
+  disabledButton: {
+    margin: 5,
+    padding: 10,
+    height: 45,
+    overflow: 'hidden',
+    borderRadius: 4,
+    backgroundColor: 'gray',
+    color: 'white',
+    fontSize: 20,
   },
   accbutton: {
     fontSize: 20,
