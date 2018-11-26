@@ -3,15 +3,18 @@ package com.myapp;
 import android.app.Application;
 import android.content.res.Configuration;
 
+import com.accengage.react.analytics.RNAccDeviceTagPackage;
+import com.accengage.react.analytics.RNAccStatesPackage;
 import com.facebook.react.ReactApplication;
+import com.accengage.react.plugin.RNAccFcmPackage;
 //import com.accengage.react.geofences.RNAccGeofencesPackage;
 //import com.accengage.react.beacons.RNAccBeaconsPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
+import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 import com.ad4screen.sdk.A4S;
-import com.accengage.react.push.RNAccPushGcmPackage;
 import com.accengage.react.RNAccPackage;
 import com.accengage.react.analytics.RNAccDeviceInfoPackage;
 import com.accengage.react.analytics.RNAccStaticListsPackage;
@@ -36,6 +39,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
             new MainReactPackage(),
+            new RNAccFcmPackage(),
 //            new RNAccGeofencesPackage(),
 //            new RNAccBeaconsPackage(),
             new RNAccInAppPackage(),
@@ -45,8 +49,9 @@ public class MainApplication extends Application implements ReactApplication {
             new RNAccDeviceInfoPackage(),
             new RNAccViewsPackage(),
             new RNAccPushPackage(),
-            new RNAccPushGcmPackage(),
-            new RNAccControlPackage()
+            new RNAccControlPackage(),
+            new RNAccDeviceTagPackage(),
+            new RNAccStatesPackage()
       );
     }
 
