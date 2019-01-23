@@ -61,6 +61,11 @@ class HomeScreen extends Component {
       } else {
         Linking.addEventListener('url', this.handleOpenURL);
       }
+
+      if (Platform.OS === 'ios') {
+        Acc.control.setOptinDataEnabled(true);
+        Acc.push.setProvisionalEnabled(true);
+      }
     }
 
     componentWillUnmount() {
