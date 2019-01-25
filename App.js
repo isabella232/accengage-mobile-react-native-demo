@@ -15,7 +15,6 @@ import {
 import { StackNavigator } from 'react-navigation';
 import Button from 'react-native-button';
 import Acc from 'react-native-acc';
-import FCMPlugin from 'react-native-acc-fcm'
 import styles from './Styles';
 import PushScreen from "./app/components/PushScreen";
 import AnalyticsScreen from "./app/components/AnalyticsScreen";
@@ -114,14 +113,19 @@ if (Platform.OS === 'android') {
       Acc.push.setCustomCategories(customCategories);
     }
 
-    
+
+    if (Platform.OS === 'ios') {
+      Acc.control.setOptinDataEnabled(true);
+      Acc.push.setProvisionalEnabled(true);
+    }
+
     Acc.inapp.setLocked(false);
-    Acc.push.setEnabled(true);
+    Acc.push.setEnabled(false);
 
     if (Platform.OS === 'android') {
       requestLocationPermission().then();
     }
-    
+
   }
 
   render() {
