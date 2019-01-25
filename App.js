@@ -60,10 +60,6 @@ class HomeScreen extends Component {
       } else {
         Linking.addEventListener('url', this.handleOpenURL);
       }
-
-      if (Platform.OS === 'ios') {
-        Acc.push.setProvisionalEnabled(true);
-      }
     }
 
     componentWillUnmount() {
@@ -117,6 +113,11 @@ if (Platform.OS === 'android') {
       Acc.push.setCustomCategories(customCategories);
     }
 
+
+    if (Platform.OS === 'ios') {
+      Acc.control.setOptinDataEnabled(true);
+      Acc.push.setProvisionalEnabled(true);
+    }
 
     Acc.inapp.setLocked(false);
     Acc.push.setEnabled(false);
