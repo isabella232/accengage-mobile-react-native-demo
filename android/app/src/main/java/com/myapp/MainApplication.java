@@ -3,9 +3,10 @@ package com.myapp;
 import android.app.Application;
 import android.content.res.Configuration;
 
-import com.accengage.react.analytics.RNAccDeviceTagPackage;
-import com.accengage.react.analytics.RNAccStatesPackage;
+
 import com.facebook.react.ReactApplication;
+import com.accengage.react.plugin.RNAccFcmPackage;
+import com.accengage.react.RNAccDeviceInfoPackage;
 import com.accengage.react.plugin.RNAccFcmPackage;
 //import com.accengage.react.geofences.RNAccGeofencesPackage;
 //import com.accengage.react.beacons.RNAccBeaconsPackage;
@@ -20,6 +21,8 @@ import com.accengage.react.analytics.RNAccDeviceInfoPackage;
 import com.accengage.react.analytics.RNAccStaticListsPackage;
 import com.accengage.react.analytics.RNAccTrackingPackage;
 import com.accengage.react.analytics.RNAccViewsPackage;
+import com.accengage.react.analytics.RNAccDeviceTagPackage;
+import com.accengage.react.analytics.RNAccStatesPackage;
 import com.accengage.react.inapp.RNAccInAppPackage;
 import com.accengage.react.push.RNAccPushPackage;
 import com.accengage.react.control.RNAccControlPackage;
@@ -40,6 +43,8 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.<ReactPackage>asList(
             new MainReactPackage(),
             new RNAccFcmPackage(),
+            new RNAccDeviceInfoPackage(),
+            new RNAccFcmPackage(),
 //            new RNAccGeofencesPackage(),
 //            new RNAccBeaconsPackage(),
             new RNAccInAppPackage(),
@@ -49,9 +54,9 @@ public class MainApplication extends Application implements ReactApplication {
             new RNAccDeviceInfoPackage(),
             new RNAccViewsPackage(),
             new RNAccPushPackage(),
-            new RNAccControlPackage(),
             new RNAccDeviceTagPackage(),
-            new RNAccStatesPackage()
+            new RNAccStatesPackage(),
+            new RNAccControlPackage()
       );
     }
 
