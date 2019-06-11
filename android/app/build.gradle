@@ -157,11 +157,11 @@ repositories {
 dependencies {
     implementation project(':react-native-acc')
     implementation project(':react-native-acc-fcm')
-//    compile project(':react-native-acc-geofences')
-//    compile project(':react-native-acc-beacons')
+    implementation project(':react-native-acc-geofences')
+    implementation project(':react-native-acc-beacons')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.android.support:appcompat-v7:27.0.3"
-    implementation "com.facebook.react:react-native:+"  // From node_modules
+    implementation "com.facebook.react:react-native:+"// From node_modules
     implementation 'com.google.android.gms:play-services-base:16.0.1'
 }
 
