@@ -5,6 +5,8 @@ import android.content.res.Configuration;
 
 
 import com.facebook.react.ReactApplication;
+import com.accengage.react.geofences.RNAccGeofencesPackage;
+import com.accengage.react.beacons.RNAccBeaconsPackage;
 import com.accengage.react.plugin.RNAccFcmPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
