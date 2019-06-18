@@ -6,6 +6,7 @@ import {
 import Button from 'react-native-button';
 import Acc from 'react-native-acc';
 import styles from './../../Styles';
+import { AsyncStorage } from "react-native";
 
 export default class ControlScreen extends Component {
   static navigationOptions = ({navigation}) => ({
@@ -144,17 +145,22 @@ export default class ControlScreen extends Component {
     this._updateBeaconServiceEnabledNames();
   }
 
-  _setOptinDataEnabled() {
-    this.optinDataEnabled = !this.optinDataEnabled;
-    Acc.control.setOptinDataEnabled(this.optinDataEnabled);
-    this._updateOptinDataEnabledNames();
+  _setOptinDataEnabled = async () => {
+    try {
+      this.optinDataEnabled = !this.optinDataEnabled;
+      Acc.control.setOptinDataEnabled(this.optinDataEnabled);
+      await AsyncStorage.setItem('optinData', this.optinDataEnabled.toString());
+      this._updateOptinDataEnabledNames();
+      console.log("OPTIN DATA STATUS HAS BEEN SUCCESSFULLY CHANGED.")
+    } catch (error) {
+      console.log("UNABLE TO CHANGE OPTIN DATA STATUS : " + error);
+    }
   }
 
   _setOptinGeolocEnabled() {
     this.optinGeolocEnabled = !this.optinGeolocEnabled;
     Acc.control.setOptinGeolocEnabled(this.optinGeolocEnabled);
     this._updateOptinGeolocEnabledNames();
-
   }
 
   render() {

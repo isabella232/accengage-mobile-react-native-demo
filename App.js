@@ -30,6 +30,8 @@ import View2Screen from "./app/components/analytics/View2Screen";
 import PushEventsScreen from "./app/components/push/PushEventsScreen.js";
 import InAppEventsScreen from "./app/components/inapp/InAppEventsScreen.js";
 import ControlScreen from "./app/components/ControlScreen";
+import { AsyncStorage } from "react-native";
+
 import 'core-js/es6/symbol'; 
 import 'core-js/fn/symbol/iterator';
 // symbol polyfills
@@ -60,6 +62,8 @@ class HomeScreen extends Component {
       } else {
         Linking.addEventListener('url', this.handleOpenURL);
       }
+      retrieveOptinData().then();
+
     }
 
     componentWillUnmount() {
@@ -113,9 +117,7 @@ if (Platform.OS === 'android') {
       Acc.push.setCustomCategories(customCategories);
     }
 
-
     if (Platform.OS === 'ios') {
-      Acc.control.setOptinDataEnabled(true);
       Acc.push.setProvisionalEnabled(true);
     }
 
@@ -188,6 +190,18 @@ function getCurrentRouteName(navigationState) {
         return getCurrentRouteName(route);
     }
     return route.routeName;
+}
+
+retrieveOptinData = async () => {
+   try {
+    const optinData = await AsyncStorage.getItem('optinData');
+    if (optinData !== null) {
+      Acc.control.setOptinDataEnabled(optinData);
+      console.log("OPTIN DATA STATUS HAS BEEN SUCCESSFULLY RETRIEVED.")
+    }
+  } catch (error) {
+    console.log("UNABLE TO RETRIEVE OPTIN DATA STATUS : " + error);
+  }
 }
 
 async function requestLocationPermission() {
