@@ -62,7 +62,7 @@ class HomeScreen extends Component {
       } else {
         Linking.addEventListener('url', this.handleOpenURL);
       }
-      retrieveOptinData().then();
+      retrieveOptinData();
 
     }
 

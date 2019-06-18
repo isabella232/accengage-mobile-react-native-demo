@@ -14,8 +14,6 @@
 		00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */; };
 		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
 		00E356F31AD99517003FC87E /* myappTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* myappTests.m */; };
-		0BF863C51FC479BC00EE7D78 /* Accengage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BF863C41FC479BC00EE7D78 /* Accengage.framework */; };
-		0BF863C61FC479BC00EE7D78 /* Accengage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0BF863C41FC479BC00EE7D78 /* Accengage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
 		139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
@@ -38,6 +36,11 @@
 		2D02E4C91E0B4AEC006451C7 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		2DCD954D1E0B4F2C00145EB5 /* myappTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* myappTests.m */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
+		76B56A5322B93C2100AA394A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76B56A5222B93C2100AA394A /* Foundation.framework */; };
+		76B56A5522B93C2800AA394A /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76B56A5422B93C2800AA394A /* CoreFoundation.framework */; };
+		76B56A5722B93C3100AA394A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76B56A5622B93C3100AA394A /* UIKit.framework */; };
+		76B56A5822B93CE300AA394A /* Accengage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BF863C41FC479BC00EE7D78 /* Accengage.framework */; };
+		76B56A5922B93CE300AA394A /* Accengage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0BF863C41FC479BC00EE7D78 /* Accengage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		A25430391FDAC627008E61CD /* AccengageConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = A25430381FDAC627008E61CD /* AccengageConfig.plist */; };
 		A2CC37321FD6F6A5004E7AC2 /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = A2CC37311FD6F6A5004E7AC2 /* NotificationService.m */; };
@@ -51,12 +54,10 @@
 		A2CC375D1FD6F783004E7AC2 /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2CC375C1FD6F783004E7AC2 /* NotificationViewController.m */; };
 		A2CC37601FD6F783004E7AC2 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2CC375E1FD6F783004E7AC2 /* MainInterface.storyboard */; };
 		A2CC37641FD6F783004E7AC2 /* AccengageCarouselNotification.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A2CC37571FD6F783004E7AC2 /* AccengageCarouselNotification.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		A2CC37691FD6F7E5004E7AC2 /* AccengageExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CC37681FD6F7E4004E7AC2 /* AccengageExtension.framework */; };
 		A2CC376A1FD6F7E5004E7AC2 /* AccengageExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CC37681FD6F7E4004E7AC2 /* AccengageExtension.framework */; };
 		A2CC376B1FD6F7E5004E7AC2 /* AccengageExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CC37681FD6F7E4004E7AC2 /* AccengageExtension.framework */; };
 		A2CC376C1FD6F7E5004E7AC2 /* AccengageExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CC37681FD6F7E4004E7AC2 /* AccengageExtension.framework */; };
 		A2CC376F1FD6FAF5004E7AC2 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2CC37711FD6FAF5004E7AC2 /* MainInterface.storyboard */; };
-		A2CC37721FD6FC40004E7AC2 /* AccengageExtension.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A2CC37681FD6F7E4004E7AC2 /* AccengageExtension.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 /* End PBXBuildFile section */
 
@@ -365,14 +366,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		0B02FCC91FC476A10093B2EB /* Embed Frameworks */ = {
+		76B56A5A22B93CE400AA394A /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A2CC37721FD6FC40004E7AC2 /* AccengageExtension.framework in Embed Frameworks */,
-				0BF863C61FC479BC00EE7D78 /* Accengage.framework in Embed Frameworks */,
+				76B56A5922B93CE300AA394A /* Accengage.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -417,6 +417,9 @@
 		2D02E4901E0B4A5D006451C7 /* myapp-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "myapp-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		6B660FBA6D304177BE119D76 /* libRNAcc.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNAcc.a; sourceTree = "<group>"; };
+		76B56A5222B93C2100AA394A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		76B56A5422B93C2800AA394A /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		76B56A5622B93C3100AA394A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		7F8D611F9A6A49DFBC492506 /* RNAcc.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNAcc.xcodeproj; path = "../node_modules/react-native-acc/ios/RNAcc.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
@@ -455,13 +458,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76B56A5722B93C3100AA394A /* UIKit.framework in Frameworks */,
+				76B56A5522B93C2800AA394A /* CoreFoundation.framework in Frameworks */,
+				76B56A5322B93C2100AA394A /* Foundation.framework in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
-				A2CC37691FD6F7E5004E7AC2 /* AccengageExtension.framework in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
-				0BF863C51FC479BC00EE7D78 /* Accengage.framework in Frameworks */,
 				00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */,
 				00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */,
 				133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */,
@@ -471,6 +475,7 @@
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				005A0BC938834233AD2BA13A /* libRNAcc.a in Frameworks */,
+				76B56A5822B93CE300AA394A /* Accengage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -763,6 +768,9 @@
 		A2CC37401FD6F753004E7AC2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				76B56A5622B93C3100AA394A /* UIKit.framework */,
+				76B56A5422B93C2800AA394A /* CoreFoundation.framework */,
+				76B56A5222B93C2100AA394A /* Foundation.framework */,
 				A2CC37411FD6F753004E7AC2 /* UserNotifications.framework */,
 				A2CC37431FD6F753004E7AC2 /* UserNotificationsUI.framework */,
 			);
@@ -829,8 +837,8 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				0B02FCC91FC476A10093B2EB /* Embed Frameworks */,
 				A2CC373A1FD6F6A5004E7AC2 /* Embed App Extensions */,
+				76B56A5A22B93CE400AA394A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -986,6 +994,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
