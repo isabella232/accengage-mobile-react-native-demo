@@ -55,11 +55,11 @@
 		</dict>
 	</dict>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string></string>
-	<key>NSLocationUsageDescription</key>
-	<string></string>
+	<string>Afin d&apos;activer le Geofencing et/ou la détection des Beacons, merci de cliquer sur &apos;toujours autoriser&apos;</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>Afin d&apos;activer le Geofencing et/ou la détection des Beacons, merci de cliquer sur &apos;toujours autoriser&apos;</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Afin d&apos;activer le Geofencing et/ou la détection des Beacons, merci de cliquer sur &apos;toujours autoriser&apos;</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
