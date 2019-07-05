@@ -95,7 +95,14 @@ export default class DeviceInfoScreen extends Component {
 
     _sendAction = () => {
       console.log("Method : " + this.state.method + ", action sent");
-      Acc.analytics.deviceInfo.updateDeviceInformation(this.state.method, this.state.key, this.state.value);
+
+      var value = this.state.value;
+
+      if (this.state.method === 'increment' || this.state.method === 'decrement') {
+        value = Number(value)
+      }
+
+      Acc.analytics.deviceInfo.updateDeviceInformation(this.state.method, this.state.key, value);
       this._initializeAll();
     }
     
