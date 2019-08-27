@@ -24,7 +24,7 @@ export default class PushEventsScreen extends Component {
       clickEventEnabled: false,
       textTypeEvent : '',
       textNotifId : '',
-      textCustomParams : '',
+      textCustomParams : ''
     };
     this.pushManagerEmitter = new NativeEventEmitter(NativeModules.RNAcc);
     this._setReceive = this._setReceive.bind(this);
@@ -55,16 +55,21 @@ export default class PushEventsScreen extends Component {
     } else if (Platform.OS == "android") {
       if (!checked) {
         this.receiveEventSubscription = DeviceEventEmitter.addListener('didReceiveNotification', (e: Event) => {
+          console.log("A4S|didReceiveNotification|Params: " + JSON.stringify(e));
           this.setState({
             textTypeEvent : "Receive",
-            textNotifId: e.pushID
+            textNotifId: e.pushID,
+            textCustomParams: JSON.stringify(e)
           })
         });
       }
       else {
         this.receiveEventSubscription.remove();
-        this.setState({ textTypeEvent: '',
-          textNotifId: ''});
+        this.setState({
+          textTypeEvent: '',
+          textNotifId: '',
+          textCustomParams: ''
+        });
       }
     }
   }
@@ -92,16 +97,21 @@ export default class PushEventsScreen extends Component {
       if (!checked) {
         console.log("Listener added");
         this.receiveEventSubscription = DeviceEventEmitter.addListener('didClickNotification', (e: Event) => {
+          console.log("A4S|didClickNotification|Params: " + JSON.stringify(e));
           this.setState({
             textTypeEvent : "Clicked",
-            textNotifId: e.pushID
+            textNotifId: e.pushID,
+            textCustomParams: JSON.stringify(e)
           })
         });
       }
       else {
         this.receiveEventSubscription.remove();
-        this.setState({ textTypeEvent: '',
-          textNotifId: ''});
+        this.setState({
+          textTypeEvent: '',
+          textNotifId: '',
+          textCustomParams: ''
+        });
       }
     }
   }

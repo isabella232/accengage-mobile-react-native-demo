@@ -56,15 +56,21 @@ export default class InAppEventsScreen extends Component {
     } else if (Platform.OS == "android") {
         if (!checked) {
           this.receiveEventSubscription = DeviceEventEmitter.addListener('didInAppDisplay', (e: Event) => {
-              this.setState({
+            console.log("A4S|didInAppDisplay|Params: " + JSON.stringify(e));
+            this.setState({
               textTypeEvent : "Receive",
-              })
+              textIdInApp: e.messageId,
+              textCustomParams: JSON.stringify(e)
+            })
           });
         }
         else {
           this.receiveEventSubscription.remove();
-          this.setState({ textTypeEvent: '',
-            textIdInApp: ''});
+          this.setState({
+            textTypeEvent: '',
+            textIdInApp: '',
+            textCustomParams: ''
+          });
         }
       }  
   }
@@ -90,19 +96,23 @@ export default class InAppEventsScreen extends Component {
       }
     } else if (Platform.OS == "android") {
         if (!checked) {
-            console.log("attention on va click");
-            this.receiveEventSubscription = DeviceEventEmitter.addListener('didInAppClick', (e: Event) => {
-              console.log("clicked !");
-                this.setState({
-                textTypeEvent : "Click",
-                })
-            });
-          }
-          else {
-            this.receiveEventSubscription.remove();
-            this.setState({ textTypeEvent: '',
-              textIdInApp: ''});
-          }
+          this.receiveEventSubscription = DeviceEventEmitter.addListener('didInAppClick', (e: Event) => {
+            console.log("A4S|didInAppClick|Params: " + JSON.stringify(e));
+            this.setState({
+              textTypeEvent : "Click",
+              textIdInApp: e.messageId,
+              textCustomParams: JSON.stringify(e)
+            })
+          });
+        }
+        else {
+          this.receiveEventSubscription.remove();
+          this.setState({
+            textTypeEvent: '',
+            textIdInApp: '',
+            textCustomParams: ''
+          });
+        }
       }
   }
 
@@ -128,16 +138,21 @@ export default class InAppEventsScreen extends Component {
     } else if (Platform.OS == "android") {
       if (!checked) {
         this.receiveEventSubscription = DeviceEventEmitter.addListener('didInAppClose', (e: Event) => {
-            console.log("Closed !");
-            this.setState({
-              textTypeEvent : "Closed",
-            })
+          console.log("A4S|didInAppClose|Params: " + JSON.stringify(e));
+          this.setState({
+            textTypeEvent : "Closed",
+            textIdInApp: e.messageId,
+            textCustomParams: JSON.stringify(e)
+          })
         });
       }
       else {
         this.receiveEventSubscription.remove();
-        this.setState({ textTypeEvent: '',
-          textIdInApp: ''});
+        this.setState({
+          textTypeEvent: '',
+          textIdInApp: '',
+          textCustomParams: ''
+        });
       }
     }
     
