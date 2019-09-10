@@ -3,11 +3,8 @@ package com.myapp;
 import android.app.Application;
 import android.content.res.Configuration;
 
-
+import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
-import com.accengage.react.geofences.RNAccGeofencesPackage;
-import com.accengage.react.beacons.RNAccBeaconsPackage;
-import com.accengage.react.plugin.RNAccFcmPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -26,6 +23,7 @@ import com.accengage.react.push.RNAccPushPackage;
 import com.accengage.react.control.RNAccControlPackage;
 import com.accengage.react.geofences.RNAccGeofencesPackage;
 import com.accengage.react.beacons.RNAccBeaconsPackage;
+import com.accengage.react.plugin.RNAccFcmPackage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -40,22 +38,25 @@ public class MainApplication extends Application implements ReactApplication {
 
     @Override
     protected List<ReactPackage> getPackages() {
-      return Arrays.<ReactPackage>asList(
-            new MainReactPackage(),
-            new RNAccFcmPackage(),
-            new RNAccInAppPackage(),
-            new RNAccPackage(),
-            new RNAccTrackingPackage(),
-            new RNAccStaticListsPackage(),
-            new RNAccDeviceInfoPackage(),
-            new RNAccViewsPackage(),
-            new RNAccPushPackage(),
-            new RNAccDeviceTagPackage(),
-            new RNAccStatesPackage(),
-            new RNAccControlPackage(),
-            new RNAccGeofencesPackage(),
-            new RNAccBeaconsPackage()
-      );
+      @SuppressWarnings("UnnecessaryLocalVariable")
+      List<ReactPackage> packages = new PackageList(this).getPackages();
+      // Packages that cannot be autolinked yet can be added manually here, for example:
+      // packages.add(new MyReactNativePackage());
+      packages.add(new MainReactPackage());
+      packages.add(new RNAccFcmPackage());
+      packages.add(new RNAccInAppPackage());
+      packages.add(new RNAccPackage());
+      packages.add(new RNAccTrackingPackage());
+      packages.add(new RNAccStaticListsPackage());
+      packages.add(new RNAccDeviceInfoPackage());
+      packages.add(new RNAccViewsPackage());
+      packages.add(new RNAccPushPackage());
+      packages.add(new RNAccDeviceTagPackage());
+      packages.add(new RNAccStatesPackage());
+      packages.add(new RNAccControlPackage());
+      packages.add(new RNAccGeofencesPackage());
+      packages.add(new RNAccBeaconsPackage());
+      return packages;
     }
 
     @Override
