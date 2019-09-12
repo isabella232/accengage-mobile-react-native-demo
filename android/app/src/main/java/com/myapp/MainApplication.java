@@ -10,20 +10,10 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
-import com.ad4screen.sdk.A4S;
-import com.accengage.react.RNAccPackage;
-import com.accengage.react.analytics.RNAccDeviceInfoPackage;
-import com.accengage.react.analytics.RNAccStaticListsPackage;
-import com.accengage.react.analytics.RNAccTrackingPackage;
-import com.accengage.react.analytics.RNAccViewsPackage;
-import com.accengage.react.analytics.RNAccDeviceTagPackage;
-import com.accengage.react.analytics.RNAccStatesPackage;
-import com.accengage.react.inapp.RNAccInAppPackage;
-import com.accengage.react.push.RNAccPushPackage;
-import com.accengage.react.control.RNAccControlPackage;
-import com.accengage.react.geofences.RNAccGeofencesPackage;
+//import com.ad4screen.sdk.A4S;
+/*import com.accengage.react.geofences.RNAccGeofencesPackage;
 import com.accengage.react.beacons.RNAccBeaconsPackage;
-import com.accengage.react.plugin.RNAccFcmPackage;
+import com.accengage.react.plugin.RNAccFcmPackage;*/
 
 import java.util.Arrays;
 import java.util.List;
@@ -42,9 +32,8 @@ public class MainApplication extends Application implements ReactApplication {
       List<ReactPackage> packages = new PackageList(this).getPackages();
       // Packages that cannot be autolinked yet can be added manually here, for example:
       // packages.add(new MyReactNativePackage());
-      packages.add(new MainReactPackage());
-      packages.add(new RNAccFcmPackage());
-      packages.add(new RNAccInAppPackage());
+      //packages.add(new RNAccFcmPackage());
+/*      packages.add(new RNAccInAppPackage());
       packages.add(new RNAccPackage());
       packages.add(new RNAccTrackingPackage());
       packages.add(new RNAccStaticListsPackage());
@@ -53,9 +42,7 @@ public class MainApplication extends Application implements ReactApplication {
       packages.add(new RNAccPushPackage());
       packages.add(new RNAccDeviceTagPackage());
       packages.add(new RNAccStatesPackage());
-      packages.add(new RNAccControlPackage());
-      packages.add(new RNAccGeofencesPackage());
-      packages.add(new RNAccBeaconsPackage());
+      packages.add(new RNAccControlPackage());*/
       return packages;
     }
 
@@ -72,34 +59,22 @@ public class MainApplication extends Application implements ReactApplication {
 
   @Override
   public void onConfigurationChanged(Configuration newConfig) {
-    if (A4S.isInA4SProcess(this)) {
-      return;
-    }
     super.onConfigurationChanged(newConfig);
   }
 
   @Override
   public void onCreate() {
-    if (A4S.isInA4SProcess(this)) {
-      return;
-    }
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
   }
 
   @Override
   public void onLowMemory() {
-    if (A4S.isInA4SProcess(this)) {
-      return;
-    }
     super.onLowMemory();
   }
 
   @Override
   public void onTerminate() {
-    if (A4S.isInA4SProcess(this)) {
-      return;
-    }
     super.onTerminate();
   }
 }

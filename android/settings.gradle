@@ -1,13 +1,13 @@
 rootProject.name = 'myapp'
-include ':react-native-acc'
-project(':react-native-acc').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-acc/android')
-include ':react-native-acc-fcm'
+/*include ':react-native-acc'
+project(':react-native-acc').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-acc/android')*/
+/*include ':react-native-acc-fcm'
 project(':react-native-acc-fcm').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-acc-fcm/android')
 include ':react-native-acc-geofences'
 project(':react-native-acc-geofences').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-acc-geofences/android')
 include ':react-native-acc-beacons'
-project(':react-native-acc-beacons').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-acc-beacons/android')
+project(':react-native-acc-beacons').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-acc-beacons/android')*/
 
 apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
-
+applyNativeModulesSettingsGradle(settings,  "../..")
 include ':app'
